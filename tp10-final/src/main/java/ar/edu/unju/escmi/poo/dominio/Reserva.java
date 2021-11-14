@@ -16,7 +16,7 @@ public class Reserva {
 	public Reserva() {
 	}
 
-	public Reserva(int idreserva, int comensales, int mesas, Float total, String estado, LocalDate fecha,
+	public Reserva(int idreserva, int comensales, int mesas, Float total, boolean estado, LocalDate fecha,
 			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
 		super();
 		this.idreserva = idreserva;
@@ -57,10 +57,10 @@ public class Reserva {
 	public void setTotal(Float total) {
 		this.total = total;
 	}
-	public String getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
-	public void setEstado(String estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 	public LocalDate getFecha() {
