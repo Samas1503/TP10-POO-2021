@@ -3,22 +3,21 @@ package ar.edu.unju.escmi.poo.dominio;
 import java.time.LocalDate;
 
 public class Reserva {
-	private int idreserva,comensales,mesas;
-	private Float total ;
+	private int idreserva, comensales, mesas;
+	private Float total;
 	private boolean estado;
-	private LocalDate fecha,hora;
+	private LocalDate fecha, hora;
 	private Cliente cliente;
 	private Salon salon;
 	private Mozo mozo;
-	
-	//METODOS CONSTRUCTORES	
-	
+
+	// METODOS CONSTRUCTORES
+
 	public Reserva() {
 	}
 
 	public Reserva(int idreserva, int comensales, int mesas, Float total, boolean estado, LocalDate fecha,
 			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
-		super();
 		this.idreserva = idreserva;
 		this.comensales = comensales;
 		this.mesas = mesas;
@@ -30,58 +29,72 @@ public class Reserva {
 		this.salon = salon;
 		this.mozo = mozo;
 	}
-	
-	//GETTERS Y SETTERS
+
+	// GETTERS Y SETTERS
 	public int getIdreserva() {
 		return idreserva;
 	}
-	
+
 	public void setIdreserva(int idreserva) {
 		this.idreserva = idreserva;
 	}
+
 	public int getComensales() {
 		return comensales;
 	}
+
 	public void setComensales(int comensales) {
 		this.comensales = comensales;
 	}
+
 	public int getMesas() {
 		return mesas;
 	}
+
 	public void setMesas(int mesas) {
 		this.mesas = mesas;
 	}
+
 	public Float getTotal() {
 		return total;
 	}
+
 	public void setTotal(Float total) {
 		this.total = total;
 	}
+
 	public boolean getEstado() {
 		return estado;
 	}
+
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
 	public LocalDate getFecha() {
 		return fecha;
 	}
+
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
+
 	public LocalDate getHora() {
 		return hora;
 	}
+
 	public void setHora(LocalDate hora) {
 		this.hora = hora;
 	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	public Salon getSalon() {
 		return salon;
 	}

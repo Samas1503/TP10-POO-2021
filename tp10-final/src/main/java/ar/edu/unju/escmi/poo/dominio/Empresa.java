@@ -3,17 +3,17 @@ package ar.edu.unju.escmi.poo.dominio;
 public class Empresa extends Cliente {
 	private int cuit;
 
-	//METODOS CONSTRUCTORES
-	
+	// METODOS CONSTRUCTORES
+
+	public Empresa() {
+	}
+
 	public Empresa(String nombre, String email, int telefono, int cuit) {
 		super(nombre, email, telefono);
 		this.cuit = cuit;
 	}
 
-	public Empresa() {
-	}
-
-	//METODOS ACCESORES
+	// METODOS ACCESORES
 	public int getCuit() {
 		return cuit;
 	}
@@ -24,8 +24,7 @@ public class Empresa extends Cliente {
 
 	@Override
 	public String toString() {
-		return "Empresa [cuit=" + cuit + ", getNombre()=" + super.getNombre() + ", getEmail()=" + super.getEmail()
-				+ ", getTelefono()=" + super.getTelefono() + "]";
+		return "Empresa [cuit=" + cuit + super.toString() + "]";
 	}
 
 }
