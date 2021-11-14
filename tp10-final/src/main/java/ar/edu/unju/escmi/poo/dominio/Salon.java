@@ -4,6 +4,17 @@ public class Salon {
 	private String nombre;
 	private int mesas;
 	
+	//METODOS CONSTRUCTORES
+	
+	public Salon() {
+	}
+	
+	public Salon(String nombre, int mesas) {
+		super();
+		this.nombre = nombre;
+		this.mesas = mesas;
+	}
+	
 	//GETTERS Y SETTERS
 	
 	public String getNombre() {
@@ -17,16 +28,6 @@ public class Salon {
 	}
 	public void setMesas(int mesas) {
 		this.mesas = mesas;
-	}
-	//METODOS CONSTRUCTORES
-	
-	public Salon(String nombre, int mesas) {
-		super();
-		this.nombre = nombre;
-		this.mesas = mesas;
-	}
-	public Salon() {
-		super();
 	}
 	
 	@Override
