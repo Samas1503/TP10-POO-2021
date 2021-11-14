@@ -5,11 +5,31 @@ import java.time.LocalDate;
 public class Reserva {
 	private int idreserva,comensales,mesas;
 	private Float total ;
-	private String estado;//sin pagar o pagado
+	private boolean estado;
 	private LocalDate fecha,hora;
 	private Cliente cliente;
 	private Salon salon;
 	private Mozo mozo;
+	
+	//METODOS CONSTRUCTORES	
+	
+	public Reserva() {
+	}
+
+	public Reserva(int idreserva, int comensales, int mesas, Float total, String estado, LocalDate fecha,
+			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
+		super();
+		this.idreserva = idreserva;
+		this.comensales = comensales;
+		this.mesas = mesas;
+		this.total = total;
+		this.estado = estado;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.cliente = cliente;
+		this.salon = salon;
+		this.mozo = mozo;
+	}
 	
 	//GETTERS Y SETTERS
 	public int getIdreserva() {
@@ -77,27 +97,6 @@ public class Reserva {
 	public void setMozo(Mozo mozo) {
 		this.mozo = mozo;
 	}
-	//METODOS CONSTRUCTORES 
-	
-	
-	public Reserva() {
-		super();
-	}
-
-	public Reserva(int idreserva, int comensales, int mesas, Float total, String estado, LocalDate fecha,
-			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
-		super();
-		this.idreserva = idreserva;
-		this.comensales = comensales;
-		this.mesas = mesas;
-		this.total = total;
-		this.estado = estado;
-		this.fecha = fecha;
-		this.hora = hora;
-		this.cliente = cliente;
-		this.salon = salon;
-		this.mozo = mozo;
-	}
 
 	@Override
 	public String toString() {
@@ -105,8 +104,4 @@ public class Reserva {
 				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + ", cliente=" + cliente + "]";
 	}
 
-	
-	
-	
-	
 }
