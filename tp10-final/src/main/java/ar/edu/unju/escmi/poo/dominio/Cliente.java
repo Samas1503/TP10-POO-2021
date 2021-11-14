@@ -10,7 +10,6 @@ public abstract class Cliente {
 	}
 	
 	public Cliente(String nombre, String email, int telefono) {
-		super();
 		this.nombre = nombre;
 		this.email = email;
 		this.telefono = telefono;
