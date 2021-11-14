@@ -5,6 +5,20 @@ public class Mozo {
 	private String nombre ,domicilio,jornada; //no se si jornada sigue valido
 	private boolean estado;
 	
+	//METODOS CONSTRUCTORES
+	
+	public Mozo() {
+	}
+	
+	public Mozo(int dni, String nombre, String domicilio, String jornada, boolean estado) {
+		super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.domicilio = domicilio;
+		this.jornada = jornada;
+		this.estado = estado;
+	}
+	
 	//GETTERS Y SETTERS
 	
 	public int getDni() {
@@ -38,25 +52,11 @@ public class Mozo {
 		this.estado = estado;
 	}
 	
-	//METODOS CONSTRUCTORES
-	public Mozo(int dni, String nombre, String domicilio, String jornada, boolean estado) {
-		super();
-		this.dni = dni;
-		this.nombre = nombre;
-		this.domicilio = domicilio;
-		this.jornada = jornada;
-		this.estado = estado;
-	}
-	public Mozo() {
-		super();
-	}
-	
 	//METODO DE MUESTREO
 	
 	@Override
 	public String toString() {
-		return "Mozo [dni=" + dni + ", nombre=" + nombre + ", domicilio=" + domicilio + ", jornada=" + jornada
-				+ ", estado=" + estado + "]";
+		return "Mozo [dni=" + dni + ", nombre=" + nombre + ", domicilio=" + domicilio + ", estado=" + estado + "]";
 	}
 	
 	
