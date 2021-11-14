@@ -1,35 +1,40 @@
 package ar.edu.unju.escmi.poo.dominio;
 
 public class Salon {
-    private String nombre;
-    private int mesas;
+	private String nombre;
+	private int mesas;
 
-    public Salon() {
-    }
+	// METODOS CONSTRUCTORES
 
-    public Salon(String nombre, int mesas) {
-        this.nombre = nombre;
-        this.mesas = mesas;
-    }
+	public Salon() {
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public Salon(String nombre, int mesas) {
+		this.nombre = nombre;
+		this.mesas = mesas;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	// GETTERS Y SETTERS
 
-    public int getMesas() {
-        return mesas;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setMesas(int mesas) {
-        this.mesas = mesas;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    @Override
-    public String toString() {
-        return "Salon [mesas=" + mesas + ", " + (nombre != null ? "nombre=" + nombre : "") + "]";
-    }
+	public int getMesas() {
+		return mesas;
+	}
+
+	public void setMesas(int mesas) {
+		this.mesas = mesas;
+	}
+
+	@Override
+	public String toString() {
+		return "Salon [nombre=" + nombre + ", mesas=" + mesas + "]";
+	}
+
 }

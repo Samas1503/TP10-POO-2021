@@ -3,89 +3,118 @@ package ar.edu.unju.escmi.poo.dominio;
 import java.time.LocalDate;
 
 public class Reserva {
-    private int idReserva = 0;
-    private Cliente cliente;
-    private int comensales;
-    private LocalDate fecha;
-    private int mesas;
-    private float total;
-    private boolean estado;
+	private int idreserva, comensales, mesas;
+	private Float total;
+	private boolean estado;
+	private LocalDate fecha, hora;
+	private Cliente cliente;
+	private Salon salon;
+	private Mozo mozo;
 
-    public Reserva() {
-    }
+	// METODOS CONSTRUCTORES
 
-    public Reserva(int idReserva, Cliente cliente, int comensales, LocalDate fecha, int mesas, float total,
-            boolean estado) {
-        this.idReserva = idReserva++;
-        this.cliente = cliente;
-        this.comensales = comensales;
-        this.fecha = fecha;
-        this.mesas = mesas;
-        this.total = total;
-        this.estado = estado;
-    }
+	public Reserva() {
+	}
 
-    public int getIdReserva() {
-        return idReserva;
-    }
+	public Reserva(int idreserva, int comensales, int mesas, Float total, boolean estado, LocalDate fecha,
+			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
+		this.idreserva = idreserva;
+		this.comensales = comensales;
+		this.mesas = mesas;
+		this.total = total;
+		this.estado = estado;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.cliente = cliente;
+		this.salon = salon;
+		this.mozo = mozo;
+	}
 
-    public void setIdReserva(int idReserva) {
-        this.idReserva = idReserva;
-    }
+	// GETTERS Y SETTERS
+	public int getIdreserva() {
+		return idreserva;
+	}
 
-    public Cliente getCliente() {
-        return cliente;
-    }
+	public void setIdreserva(int idreserva) {
+		this.idreserva = idreserva;
+	}
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+	public int getComensales() {
+		return comensales;
+	}
 
-    public int getComensales() {
-        return comensales;
-    }
+	public void setComensales(int comensales) {
+		this.comensales = comensales;
+	}
 
-    public void setComensales(int comensales) {
-        this.comensales = comensales;
-    }
+	public int getMesas() {
+		return mesas;
+	}
 
-    public LocalDate getFecha() {
-        return fecha;
-    }
+	public void setMesas(int mesas) {
+		this.mesas = mesas;
+	}
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
+	public Float getTotal() {
+		return total;
+	}
 
-    public int getMesas() {
-        return mesas;
-    }
+	public void setTotal(Float total) {
+		this.total = total;
+	}
 
-    public void setMesas(int mesas) {
-        this.mesas = mesas;
-    }
+	public boolean getEstado() {
+		return estado;
+	}
 
-    public float getTotal() {
-        return total;
-    }
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 
-    public void setTotal(float total) {
-        this.total = total;
-    }
+	public LocalDate getFecha() {
+		return fecha;
+	}
 
-    public boolean getEstado() {
-        return estado;
-    }
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
+	public LocalDate getHora() {
+		return hora;
+	}
 
-    @Override
-    public String toString() {
-        return "Reserva [" + "idReserva=" + idReserva + (cliente != null ? "cliente=" + cliente + ", " : "")
-                + "comensales=" + comensales + ", estado=" + estado + ", "
-                + (fecha != null ? "fecha=" + fecha + ", " : "") + ", mesas=" + mesas + ", total=" + total + "]";
-    }
+	public void setHora(LocalDate hora) {
+		this.hora = hora;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
+	public Mozo getMozo() {
+		return mozo;
+	}
+
+	public void setMozo(Mozo mozo) {
+		this.mozo = mozo;
+	}
+
+	@Override
+	public String toString() {
+		return "Reserva [idreserva=" + idreserva + ", comensales=" + comensales + ", mesas=" + mesas + ", total="
+				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + ", cliente=" + cliente + "]";
+	}
 
 }

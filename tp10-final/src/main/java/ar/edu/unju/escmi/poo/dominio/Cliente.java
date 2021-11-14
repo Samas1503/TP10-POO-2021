@@ -1,55 +1,60 @@
+
 package ar.edu.unju.escmi.poo.dominio;
 
 public abstract class Cliente {
-    private String nombre;
-    private String email;
-    private int telefono;
+	private String nombre, email;
+	private int telefono;
 
-    public Cliente() {
-    }
+	// METODOS CONSTRUCTORES
 
-    public Cliente(String nombre, String email, int telefono) {
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-    }
+	public Cliente() {
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public Cliente(String nombre, String email, int telefono) {
+		this.nombre = nombre;
+		this.email = email;
+		this.telefono = telefono;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	// METODO GETTERS Y SETTERS
 
-    public String getEmail() {
-        return email;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public int getTelefono() {
-        return telefono;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    @Override
-    public String toString() {
-        return (email != null ? "email=" + email + ", " : "") + (nombre != null ? "nombre=" + nombre + ", " : "")
-                + "telefono=" + telefono + "]";
-    }
+	public int getTelefono() {
+		return telefono;
+	}
 
-    /*
-     * public Reserva hacerReserva() {
-     * 
-     * }
-     */
-    public void pagarReserva() {
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
 
-    }
+	// METODO ToString
+
+	@Override
+	public String toString() {
+		return ", Nombre=" + nombre + ", Email=" + email + ", Telefono=" + telefono + "]";
+	}
+
+	public Reserva hacerReserva() {
+		return null;
+	}
+
+	public void pagarReserva() {
+
+	}
+
 }

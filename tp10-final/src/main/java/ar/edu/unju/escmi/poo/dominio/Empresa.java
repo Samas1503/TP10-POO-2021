@@ -1,27 +1,30 @@
 package ar.edu.unju.escmi.poo.dominio;
 
 public class Empresa extends Cliente {
-    private int cuit;
+	private int cuit;
 
-    public Empresa() {
-    }
+	// METODOS CONSTRUCTORES
 
-    public Empresa(String nombre, String email, int telefono, int cuit) {
-        super(nombre, email, telefono);
-        this.cuit = cuit;
-    }
+	public Empresa() {
+	}
 
-    public int getCuit() {
-        return cuit;
-    }
+	public Empresa(String nombre, String email, int telefono, int cuit) {
+		super(nombre, email, telefono);
+		this.cuit = cuit;
+	}
 
-    public void setCuit(int cuit) {
-        this.cuit = cuit;
-    }
+	// METODOS ACCESORES
+	public int getCuit() {
+		return cuit;
+	}
 
-    @Override
-    public String toString() {
-        return "Empresa [cuit=" + cuit + super.toString() + "]";
-    }
+	public void setCuit(int cuit) {
+		this.cuit = cuit;
+	}
+
+	@Override
+	public String toString() {
+		return "Empresa [cuit=" + cuit + super.toString() + "]";
+	}
 
 }
