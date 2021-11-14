@@ -1,4 +1,4 @@
-package package ar.edu.unju.escmi.poo.dominio;
+package ar.edu.unju.escmi.poo.dominio;
 
 public abstract class Cliente {
 	private String nombre,email;
