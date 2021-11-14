@@ -3,8 +3,21 @@ package ar.edu.unju.escmi.poo.dominio;
 public abstract class Cliente {
 	private String nombre,email;
 	private int telefono;
+		
+	//METODOS CONSTRUCTORES
+	
+	public Cliente() {
+	}
+	
+	public Cliente(String nombre, String email, int telefono) {
+		super();
+		this.nombre = nombre;
+		this.email = email;
+		this.telefono = telefono;
+	}
 	
 	//METODO GETTERS Y SETTERS
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -22,18 +35,6 @@ public abstract class Cliente {
 	}
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
-	}
-	
-	//METODOS CONSTRUCTORES
-	
-	public Cliente(String nombre, String email, int telefono) {
-		super();
-		this.nombre = nombre;
-		this.email = email;
-		this.telefono = telefono;
-	}
-	public Cliente() {
-		super();
 	}
 	
 	//METODO ToString
