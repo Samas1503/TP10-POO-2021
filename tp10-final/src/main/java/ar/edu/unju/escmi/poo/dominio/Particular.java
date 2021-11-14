@@ -26,8 +26,8 @@ public class Particular extends Cliente {
 
 	@Override
 	public String toString() {
-		return "Particular [dni=" + dni + ", getNombre()=" + getNombre() + ", getEmail()=" + getEmail()
-				+ ", getTelefono()=" + getTelefono() + "]";
+		return "Particular [dni=" + dni + ", Nombre=" + super.getNombre() + ", Email=" + super.getEmail()
+				+ ", Telefono=" + super.getTelefono() + "]";
 	}
 
 	
