@@ -1,8 +1,21 @@
 package ar.edu.unju.escmi.poo.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "mozos")
 public class Mozo {
+
+	@Id
 	private int dni;
+	
+	@Column
 	private String nombre, domicilio, jornada; // no se si jornada sigue valido
+
+	@Column
 	private boolean estado;
 
 	// METODOS CONSTRUCTORES
@@ -51,7 +64,7 @@ public class Mozo {
 		this.jornada = jornada;
 	}
 
-	public boolean isEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
 
