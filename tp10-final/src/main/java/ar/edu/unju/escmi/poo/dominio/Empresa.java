@@ -25,8 +25,8 @@ public class Empresa extends Cliente {
 
 	@Override
 	public String toString() {
-		return "Empresa [cuit=" + cuit + ", getNombre()=" + getNombre() + ", getEmail()=" + getEmail()
-				+ ", getTelefono()=" + getTelefono() + "]";
+		return "Empresa [cuit=" + cuit + ", getNombre()=" + super.getNombre() + ", getEmail()=" + super.getEmail()
+				+ ", getTelefono()=" + super.getTelefono() + "]";
 	}
 
 	
