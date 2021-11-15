@@ -42,4 +42,9 @@ public class ReservaUtil {
         aModificar.getMozo().setEstado(true);
         aModificar.setTotal((float) 0);
     }
+
+    public void eliminarReserva(int id) {
+        Reserva aEliminar = buscarReserva(id);
+        reservaDao.eliminarReserva(aEliminar);
+    }
 }

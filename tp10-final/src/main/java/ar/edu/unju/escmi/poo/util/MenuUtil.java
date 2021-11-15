@@ -1,7 +1,9 @@
 package ar.edu.unju.escmi.poo.util;
 
+import java.util.List;
 import java.util.Scanner;
 
+import ar.edu.unju.escmi.poo.dominio.Reserva;
 import ar.edu.unju.escmi.poo.dominio.Salon;
 
 public class MenuUtil {
@@ -9,20 +11,26 @@ public class MenuUtil {
         Scanner sc = new Scanner(System.in);
         MozoUtil mozoUtil = new MozoUtil();
         SalonUtil salonUtil = new SalonUtil();
+        ReservaUtil reservaUtil = new ReservaUtil();
         int op = -1, dni = 0;
         String nombre, domicilio;
         boolean valido = true;
         do {
-            System.out.println("1- Alta Mozo");
-            System.out.println("2- Listado Mozos");
-            System.out.println("3- Consultar Mesas Disponibles de un Salon");
-            System.out.println("4-");
-            System.out.println("5-");
-            System.out.println("6-");
-            System.out.println("7-");
-            System.out.println("8-");
-            System.out.println("9-");
-            System.out.println("0- Salir");
+            System.out.println("***********************************************************************");
+            System.out.println("*                                MENU                                 *");
+            System.out.println("***********************************************************************");
+            System.out.println("*    1- Alta Mozo                                                     *");
+            System.out.println("*    2- Listado Mozos                                                 *");
+            System.out.println("*    3- Consultar Mesas Disponibles de un Salon.                      *");
+            System.out.println("*    4- Consultar Mesas Ocupadas Mostrando la Cantidad de Comensales. *");
+            System.out.println("*    5- Alta de una Reserva.                                          *");
+            System.out.println("*    6- Finalizar Reserva.                                            *");
+            System.out.println("*    7- Consultar Cliente.                                            *");
+            System.out.println("*    8- Listar Reservas.                                              *");
+            System.out.println("*    9- Eliminar Reserva. Eliminar Reserva.                           *");
+            System.out.println("***********************************************************************");
+            System.out.println("*                              0- Salir.                              *");
+            System.out.println("***********************************************************************");
             switch (op) {
             case 0:
                 System.out.println("Saliendo del programa");
@@ -61,6 +69,32 @@ public class MenuUtil {
                 }
                 break;
             case 4:
+
+                break;
+            case 5:
+                try {
+                    List<Reserva> reservas = reservaUtil.obtenerReservas();
+                    int mesas = 0;
+                    int comensales = 0;
+                    for (Reserva r : reservas) {
+                        mesas += r.getMesas();
+                        comensales += r.getComensales();
+                    }
+                    System.out.println("Hay " + mesas + " mesas ocupadas por " + comensales + " comensales.");
+                } catch (Exception e) {
+                    System.out.println("No hay nunguna mesa ocupada");
+                }
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+                reservaUtil.mostrarReservas();
+                break;
+            case 9:
 
                 break;
             default:

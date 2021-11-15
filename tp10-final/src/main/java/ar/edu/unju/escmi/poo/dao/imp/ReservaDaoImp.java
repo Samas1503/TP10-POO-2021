@@ -49,7 +49,6 @@ public class ReservaDaoImp implements IReservaDao {
         return null;
     }
 
-    @Override
     public void eliminarReserva(Reserva eliminada) {
         try {
             manager.getTransaction().begin();
@@ -57,7 +56,7 @@ public class ReservaDaoImp implements IReservaDao {
             manager.getTransaction().commit();
         } catch (Exception e) {
             System.out.println(e);
-        }        
+        }
     }
-    
+
 }
