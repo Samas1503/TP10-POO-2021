@@ -11,7 +11,7 @@ public class Mozo {
 
 	@Id
 	private int dni;
-	
+
 	@Column
 	private String nombre, domicilio, jornada; // no se si jornada sigue valido
 

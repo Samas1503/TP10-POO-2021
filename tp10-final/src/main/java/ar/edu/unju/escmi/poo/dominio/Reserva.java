@@ -23,7 +23,7 @@ public class Reserva {
 
 	@Column
 	private int comensales, mesas;
-	
+
 	@Column
 	private Float total;
 	@Column
@@ -31,7 +31,7 @@ public class Reserva {
 	@Column
 	private LocalDate fecha, hora;
 
-	//relationships
+	// relationships
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
@@ -49,8 +49,8 @@ public class Reserva {
 	public Reserva() {
 	}
 
-	public Reserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha,
-			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
+	public Reserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha, LocalDate hora,
+			Cliente cliente, Salon salon, Mozo mozo) {
 		this.comensales = comensales;
 		this.mesas = mesas;
 		this.total = total;

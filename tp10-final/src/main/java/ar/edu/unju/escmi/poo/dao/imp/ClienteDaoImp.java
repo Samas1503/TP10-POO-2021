@@ -11,7 +11,7 @@ import ar.edu.unju.escmi.poo.dominio.Cliente;
 import ar.edu.unju.escmi.poo.dominio.Empresa;
 import ar.edu.unju.escmi.poo.dominio.Particular;
 
-public class ClienteDaoImp implements IClienteDao{
+public class ClienteDaoImp implements IClienteDao {
 
     private static EntityManager manager = EmfSingleton.getInstace().getEmf().createEntityManager();
 
@@ -31,7 +31,7 @@ public class ClienteDaoImp implements IClienteDao{
     public List<Cliente> obtenerClientes() {
         try {
             Query query = manager.createQuery("Select e from Cliente e");
-            return (List<Cliente>)query.getResultList();
+            return (List<Cliente>) query.getResultList();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -61,5 +61,5 @@ public class ClienteDaoImp implements IClienteDao{
         }
         return null;
     }
-    
+
 }

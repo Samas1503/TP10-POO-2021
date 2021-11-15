@@ -41,8 +41,8 @@ public class Principal {
         salonDao.guardarSalon(nuevoSalon);
 
         // reserva
-        Reserva nueva = new Reserva(10, 20, (float) 123.3, false, LocalDate.now(), LocalDate.now(), nuevo,
-                nuevoSalon, nuevoMozo);
+        Reserva nueva = new Reserva(10, 20, (float) 123.3, false, LocalDate.now(), LocalDate.now(), nuevo, nuevoSalon,
+                nuevoMozo);
         reservaDao.guardarReserva(nueva);
 
     }
