@@ -1,6 +1,7 @@
 package ar.edu.unju.escmi.poo.dominio;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,8 @@ public class Reserva {
 	@Column
 	private boolean estado;
 	@Column
-	private LocalDate fecha, hora;
+	private LocalDate fecha;
+	private LocalTime hora;
 
 	// relationships
 	@OneToOne(fetch = FetchType.LAZY)
@@ -49,7 +51,7 @@ public class Reserva {
 	public Reserva() {
 	}
 
-	public Reserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha, LocalDate hora,
+	public Reserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha, LocalTime hora,
 			Cliente cliente, Salon salon, Mozo mozo) {
 		this.comensales = comensales;
 		this.mesas = mesas;
@@ -111,11 +113,11 @@ public class Reserva {
 		this.fecha = fecha;
 	}
 
-	public LocalDate getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
 
-	public void setHora(LocalDate hora) {
+	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
 
