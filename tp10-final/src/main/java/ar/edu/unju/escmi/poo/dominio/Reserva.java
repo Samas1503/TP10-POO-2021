@@ -2,13 +2,46 @@ package ar.edu.unju.escmi.poo.dominio;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "reservas")
 public class Reserva {
-	private int idreserva, comensales, mesas;
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idReserva;
+
+	@Column
+	private int comensales, mesas;
+	
+	@Column
 	private Float total;
+	@Column
 	private boolean estado;
+	@Column
 	private LocalDate fecha, hora;
+
+	//relationships
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "nombre_salon")
 	private Salon salon;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "dni_mozo")
 	private Mozo mozo;
 
 	// METODOS CONSTRUCTORES
@@ -16,9 +49,8 @@ public class Reserva {
 	public Reserva() {
 	}
 
-	public Reserva(int idreserva, int comensales, int mesas, Float total, boolean estado, LocalDate fecha,
+	public Reserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha,
 			LocalDate hora, Cliente cliente, Salon salon, Mozo mozo) {
-		this.idreserva = idreserva;
 		this.comensales = comensales;
 		this.mesas = mesas;
 		this.total = total;
@@ -32,11 +64,11 @@ public class Reserva {
 
 	// GETTERS Y SETTERS
 	public int getIdreserva() {
-		return idreserva;
+		return idReserva;
 	}
 
 	public void setIdreserva(int idreserva) {
-		this.idreserva = idreserva;
+		this.idReserva = idreserva;
 	}
 
 	public int getComensales() {
@@ -113,7 +145,7 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Reserva [idreserva=" + idreserva + ", comensales=" + comensales + ", mesas=" + mesas + ", total="
+		return "Reserva [idreserva=" + idReserva + ", comensales=" + comensales + ", mesas=" + mesas + ", total="
 				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + ", cliente=" + cliente + "]";
 	}
 

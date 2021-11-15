@@ -1,8 +1,31 @@
 
 package ar.edu.unju.escmi.poo.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "clientes")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class Cliente {
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	@Column
 	private String nombre, email;
+	@Column
 	private int telefono;
 
 	// METODOS CONSTRUCTORES
@@ -17,6 +40,14 @@ public abstract class Cliente {
 	}
 
 	// METODO GETTERS Y SETTERS
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
