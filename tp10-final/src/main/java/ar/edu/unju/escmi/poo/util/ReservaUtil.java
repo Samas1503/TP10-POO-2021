@@ -13,8 +13,7 @@ import ar.edu.unju.escmi.poo.dominio.Reserva;
 import ar.edu.unju.escmi.poo.dominio.Salon;
 
 public class ReservaUtil {
-    ReservaDaoImp reservaDao = new ReservaDaoImp();
-    SalonUtil salonUtil = new SalonUtil();
+    static ReservaDaoImp reservaDao = new ReservaDaoImp();
     MozoUtil mozoUtil = new MozoUtil();
     ClienteUtil clienteUtil = new ClienteUtil();
     Scanner sc = new Scanner(System.in);
@@ -38,7 +37,7 @@ public class ReservaUtil {
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
         cliente = clienteUtil.obtenerParticular(44706400);
-        salon = salonUtil.obtenerSalon("Salon de Mayko");
+        salon = SalonUtil.obtenerSalon("Salon de Mayko");
         mozo = mozoUtil.obtenerMozo(15684892);
         mozo.setEstado(false);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
@@ -50,7 +49,7 @@ public class ReservaUtil {
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
         cliente = clienteUtil.obtenerParticular(44700523);
-        salon = salonUtil.obtenerSalon("Salon de Samuel");
+        salon = SalonUtil.obtenerSalon("Salon de Samuel");
         mozo = mozoUtil.obtenerMozo(35489120);
         mozo.setEstado(false);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
@@ -64,7 +63,7 @@ public class ReservaUtil {
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
         cliente = clienteUtil.obtenerEmpresa(123456789);
-        salon = salonUtil.obtenerSalon("Salon de Santy");
+        salon = SalonUtil.obtenerSalon("Salon de Santy");
         mozo = mozoUtil.obtenerMozo(32654781);
         mozo.setEstado(false);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
@@ -76,7 +75,7 @@ public class ReservaUtil {
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
         cliente = clienteUtil.obtenerEmpresa(789456132);
-        salon = salonUtil.obtenerSalon("Salon de Mayko");
+        salon = SalonUtil.obtenerSalon("Salon de Mayko");
         mozo = mozoUtil.obtenerMozo(23549842);
         mozo.setEstado(false);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
@@ -100,13 +99,13 @@ public class ReservaUtil {
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
         try {
-            salonUtil.mostrarSalonesDisponibles(mesas);
+            SalonUtil.mostrarSalonesDisponibles(mesas);
             do {
                 try {
                     System.out.println("Ingrese el nombre del salon del cual desea reservar.");
                     nombre = sc.nextLine();
                     sc.next();
-                    salon = salonUtil.obtenerSalon(nombre);
+                    salon = SalonUtil.obtenerSalon(nombre);
                     if (salon != null)
                         valido = true;
                 } catch (Exception e) {
@@ -159,11 +158,11 @@ public class ReservaUtil {
         }
     }
 
-    public List<Reserva> obtenerReservas() {
+    public static List<Reserva> obtenerReservas() {
         return reservaDao.obtenerReservas();
     }
 
-    public Reserva obtenerReserva(int id) {
+    public static Reserva obtenerReserva(int id) {
         return reservaDao.obtenerReserva(id);
     }
 

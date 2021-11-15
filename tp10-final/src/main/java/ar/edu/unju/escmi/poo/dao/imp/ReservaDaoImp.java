@@ -40,7 +40,7 @@ public class ReservaDaoImp implements IReservaDao {
     @Override
     public Reserva obtenerReserva(int id) {
         try {
-            Query query = manager.createQuery("Select r from Reserva where id = :id");
+            Query query = manager.createQuery("Select r from Reserva r where id = :id");
             query.setParameter("id", id);
             return (Reserva) query.getSingleResult();
         } catch (Exception e) {

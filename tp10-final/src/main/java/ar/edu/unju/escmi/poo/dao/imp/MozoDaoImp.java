@@ -39,7 +39,7 @@ public class MozoDaoImp implements IMozoDao {
     @Override
     public Mozo obtenerMozo(int dni) {
         try {
-            Query query = manager.createQuery("Select m from Mozo where dni = :dni");
+            Query query = manager.createQuery("SELECT m FROM Mozo m " + " WHERE m.dni = :dni");
             query.setParameter("dni", dni);
             return (Mozo) query.getSingleResult();
         } catch (Exception e) {

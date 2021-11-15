@@ -8,7 +8,7 @@ import ar.edu.unju.escmi.poo.dominio.Mozo;
 
 public class MozoUtil {
     Scanner sc = new Scanner(System.in);
-    MozoDaoImp mozoDao = new MozoDaoImp();
+    static MozoDaoImp mozoDao = new MozoDaoImp();
 
     public void precargarMozos() {
         crearMozo(23549842, "Jarvis", "mi casa 18");
@@ -36,7 +36,7 @@ public class MozoUtil {
         return mozoDao.obtenerMozos();
     }
 
-    public Mozo obtenerMozo(int dni) {
+    public static Mozo obtenerMozo(int dni) {
         return mozoDao.obtenerMozo(dni);
     }
 }

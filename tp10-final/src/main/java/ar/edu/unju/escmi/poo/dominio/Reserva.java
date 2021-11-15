@@ -51,7 +51,8 @@ public class Reserva {
 	public Reserva() {
 	}
 
-	public Reserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha, LocalTime hora,
+	public Reserva(int comensales, int mesas, Float total, boolean estado,
+			LocalDate fecha, LocalTime hora,
 			Cliente cliente, Salon salon, Mozo mozo) {
 		this.comensales = comensales;
 		this.mesas = mesas;

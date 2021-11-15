@@ -9,7 +9,7 @@ import ar.edu.unju.escmi.poo.dominio.Empresa;
 import ar.edu.unju.escmi.poo.dominio.Particular;
 
 public class ClienteUtil {
-    ClienteDaoImp clienteDao = new ClienteDaoImp();
+    static ClienteDaoImp clienteDao = new ClienteDaoImp();
 
     public void precargarClientes() {
         crearClienteParticular(44706681, "Mayko Hernandez", "hola@pvto.com", 123);
@@ -58,11 +58,11 @@ public class ClienteUtil {
         return clienteDao.obtenerClientes();
     }
 
-    public Particular obtenerParticular(int dni) {
+    public static Particular obtenerParticular(int dni) {
         return clienteDao.obtenerClienteParticular(dni);
     }
 
-    public Empresa obtenerEmpresa(int cuit) {
+    public static Empresa obtenerEmpresa(int cuit) {
         return clienteDao.obtenerClienteEmpresa(cuit);
     }
 }

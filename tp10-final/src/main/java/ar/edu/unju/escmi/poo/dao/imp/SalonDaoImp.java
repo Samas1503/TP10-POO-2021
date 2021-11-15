@@ -40,7 +40,7 @@ public class SalonDaoImp implements ISalonDao {
     @Override
     public Salon obtenerSalon(String nombre) {
         try {
-            Query query = manager.createQuery("Select s from Salon where nombre like :nombre");
+            Query query = manager.createQuery("SELECT s FROM Salon s" + " WHERE s.nombre = :nombre");
             query.setParameter("nombre", nombre);
             return (Salon) query.getSingleResult();
         } catch (Exception e) {

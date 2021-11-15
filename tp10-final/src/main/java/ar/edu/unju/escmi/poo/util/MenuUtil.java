@@ -28,10 +28,11 @@ public class MenuUtil {
             System.out.println("*    6- Finalizar Reserva.                                            *");
             System.out.println("*    7- Consultar Cliente.                                            *");
             System.out.println("*    8- Listar Reservas.                                              *");
-            System.out.println("*    9- Eliminar Reserva. Eliminar Reserva.                           *");
+            System.out.println("*    9- Eliminar Reserva.					                         *");
             System.out.println("***********************************************************************");
             System.out.println("*                              0- Salir.                              *");
             System.out.println("***********************************************************************");
+            op = sc.nextInt(); 
             switch (op) {
             case 0:
                 System.out.println("Saliendo del programa");
@@ -63,7 +64,7 @@ public class MenuUtil {
                     System.out.println("Ingrese el nombre del salon al que desea consultar.");
                     nombre = sc.nextLine();
                     sc.next();
-                    Salon buscado = salonUtil.obtenerSalon(nombre);
+                    Salon buscado = SalonUtil.obtenerSalon(nombre);
                     salonUtil.obtenerMesasLibres(buscado);
                 } catch (Exception e) {
                     System.out.println("No hay Salones Registrados");
@@ -157,7 +158,7 @@ public class MenuUtil {
                 id = sc.nextInt();
                 clienteUtil.mostrarCliente(id);
                 break;
-            case 8:
+            case 9:
                 reservaUtil.mostrarReservas();
                 Reserva reserva = null;
                 do {
@@ -172,7 +173,7 @@ public class MenuUtil {
                     }
                 } while (!valido);
                 break;
-            case 9:
+            case 8:
                 try {
                     reservaUtil.mostrarReservas();
                 } catch (Exception e) {
