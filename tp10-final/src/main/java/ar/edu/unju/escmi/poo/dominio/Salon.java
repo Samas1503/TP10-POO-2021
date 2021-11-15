@@ -1,7 +1,19 @@
 package ar.edu.unju.escmi.poo.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "salones")
 public class Salon {
+
+	@Id
+	@Column
 	private String nombre;
+	@Column
 	private int mesas;
 
 	// METODOS CONSTRUCTORES

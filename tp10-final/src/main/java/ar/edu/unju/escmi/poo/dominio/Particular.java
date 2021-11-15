@@ -1,6 +1,14 @@
 package ar.edu.unju.escmi.poo.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Particular")
 public class Particular extends Cliente {
+
+	@Column
 	private int dni;
 
 	// METODOS CONSTRUCTORES
