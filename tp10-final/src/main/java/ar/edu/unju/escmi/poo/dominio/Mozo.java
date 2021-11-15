@@ -13,7 +13,7 @@ public class Mozo {
 	private int dni;
 
 	@Column
-	private String nombre, domicilio, jornada; // no se si jornada sigue valido
+	private String nombre, domicilio;
 
 	@Column
 	private boolean estado;
@@ -54,14 +54,6 @@ public class Mozo {
 
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
-	}
-
-	public String getJornada() {
-		return jornada;
-	}
-
-	public void setJornada(String jornada) {
-		this.jornada = jornada;
 	}
 
 	public boolean getEstado() {

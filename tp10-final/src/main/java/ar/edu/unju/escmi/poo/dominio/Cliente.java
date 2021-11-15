@@ -1,3 +1,4 @@
+
 package ar.edu.unju.escmi.poo.dominio;
 
 import javax.persistence.Column;
