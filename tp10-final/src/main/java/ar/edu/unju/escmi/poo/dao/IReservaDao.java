@@ -9,4 +9,5 @@ public interface IReservaDao {
     public void guardarReserva(Reserva nueva);
     public List<Reserva> obtenerReservas();
     public Reserva obtenerReserva(int id);
+    public void eliminarReserva(Reserva eliminada);
 }
