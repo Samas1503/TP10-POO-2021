@@ -1,3 +1,4 @@
+
 package ar.edu.unju.escmi.poo.dominio;
 
 import javax.persistence.Column;
@@ -16,7 +17,6 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 public abstract class Cliente {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

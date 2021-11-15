@@ -9,7 +9,7 @@ import ar.edu.unju.escmi.poo.conf.EmfSingleton;
 import ar.edu.unju.escmi.poo.dao.IMozoDao;
 import ar.edu.unju.escmi.poo.dominio.Mozo;
 
-public class MozoDaoImp implements IMozoDao{
+public class MozoDaoImp implements IMozoDao {
 
     private static EntityManager manager = EmfSingleton.getInstace().getEmf().createEntityManager();
 
@@ -47,5 +47,5 @@ public class MozoDaoImp implements IMozoDao{
         }
         return null;
     }
-    
+
 }

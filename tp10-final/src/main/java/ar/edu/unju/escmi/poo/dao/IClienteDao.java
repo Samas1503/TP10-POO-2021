@@ -9,8 +9,11 @@ import ar.edu.unju.escmi.poo.dominio.Particular;
 public interface IClienteDao {
 
     public void guardarCliente(Cliente nuevo);
+
     public List<Cliente> obtenerClientes();
+
     public Particular obtenerClienteParticular(int dni);
+
     public Empresa obtenerClienteEmpresa(int cuit);
-    
+
 }

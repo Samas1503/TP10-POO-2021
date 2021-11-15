@@ -22,7 +22,7 @@ public class ReservaDaoImp implements IReservaDao {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ReservaDaoImp implements IReservaDao {
             Query query = manager.createQuery("Select r from Reserva where id = :id");
             query.setParameter("id", id);
             return (Reserva) query.getSingleResult();
-        } catch (Exception e) { 
+        } catch (Exception e) {
             System.out.println(e);
         }
         return null;
