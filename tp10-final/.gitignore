@@ -13,3 +13,9 @@
 .factorypath
 .project
 .vscode/
+
+#
+# tp10-final
+#
+
+target/classes/META-INF/persistence.xml
