@@ -37,9 +37,11 @@ public class SalonUtil {
         }
     }
 
-    public void mostrarSalones() {
+    public void mostrarSalones() throws Exception {
         List<Salon> lista = new ArrayList<Salon>();
         lista = salonDao.obtenerSalones();
+        if (lista.isEmpty())
+            throw new NullPointerException();
         for (Salon s : lista)
             System.out.println(s.toString());
     }
@@ -77,5 +79,9 @@ public class SalonUtil {
             if (r.getSalon().getNombre().equals(n))
                 c += r.getComensales();
         return c;
+    }
+
+    public static void modificarSalon(Salon salon) {
+        salonDao.modificarSalon(salon);
     }
 }

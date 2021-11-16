@@ -59,4 +59,15 @@ public class ReservaDaoImp implements IReservaDao {
         }
     }
 
+    @Override
+    public void modificarReserva(Reserva aModificar) {
+        try {
+            manager.getTransaction().begin();
+            manager.merge(aModificar);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }

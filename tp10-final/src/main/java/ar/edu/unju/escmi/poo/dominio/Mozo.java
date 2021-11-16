@@ -64,6 +64,51 @@ public class Mozo {
 		this.estado = estado;
 	}
 
+	// HASHCODE AND EQUALS
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + dni;
+		result = prime * result + ((domicilio == null) ? 0 : domicilio.hashCode());
+		result = prime * result + (estado ? 1231 : 1237);
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Mozo)) {
+			return false;
+		}
+		Mozo other = (Mozo) obj;
+		if (dni != other.dni) {
+			return false;
+		}
+		if (domicilio == null) {
+			if (other.domicilio != null) {
+				return false;
+			}
+		} else if (!domicilio.equals(other.domicilio)) {
+			return false;
+		}
+		if (estado != other.estado) {
+			return false;
+		}
+		if (nombre == null) {
+			if (other.nombre != null) {
+				return false;
+			}
+		} else if (!nombre.equals(other.nombre)) {
+			return false;
+		}
+		return true;
+	}
+
 	// METODO DE MUESTREO
 
 	@Override

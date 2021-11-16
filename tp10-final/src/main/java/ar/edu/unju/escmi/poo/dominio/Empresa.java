@@ -31,8 +31,35 @@ public class Empresa extends Cliente {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cuit;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Empresa)) {
+			return false;
+		}
+		Empresa other = (Empresa) obj;
+		if (cuit != other.cuit) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Empresa [cuit=" + cuit + super.toString() + "]";
+	}
+
+	public String toString2() {
+		return "Particular [dni=" + cuit + "]";
 	}
 
 }

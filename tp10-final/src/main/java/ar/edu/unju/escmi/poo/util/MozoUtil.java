@@ -27,9 +27,11 @@ public class MozoUtil {
 
     public void mostrarMozos() {
         List<Mozo> lista = mozoDao.obtenerMozos();
-        for (Mozo m : lista)
-            System.out.println(m.toString());
-
+        if (!lista.isEmpty())
+            for (Mozo m : lista)
+                System.out.println(m.toString());
+        else
+            System.out.println("No hay Mozos Registrados.");
     }
 
     public List<Mozo> obtenerMozos() {
@@ -38,5 +40,9 @@ public class MozoUtil {
 
     public static Mozo obtenerMozo(int dni) {
         return mozoDao.obtenerMozo(dni);
+    }
+
+    public static void modificarMozo(Mozo mozo) {
+        mozoDao.modificarMozo(mozo);
     }
 }

@@ -14,8 +14,8 @@ public class Principal {
         ReservaUtil reservaUtil = new ReservaUtil();
         MenuUtil menuUtil = new MenuUtil();
 
-        //usar primera vez
-        
+        // usar primera vez
+
         // clientes
         clienteUtil.precargarClientes();
 
@@ -27,9 +27,7 @@ public class Principal {
 
         // reservas
         reservaUtil.precargarReservas();
-			
-		
-		
+
         // menu
         menuUtil.menu();
     }

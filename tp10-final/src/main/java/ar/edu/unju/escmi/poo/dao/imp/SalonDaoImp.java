@@ -49,4 +49,15 @@ public class SalonDaoImp implements ISalonDao {
         return null;
     }
 
+    @Override
+    public void modificarSalon(Salon salon) {
+        try {
+            manager.getTransaction().begin();
+            manager.merge(salon);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }

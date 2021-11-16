@@ -48,4 +48,15 @@ public class MozoDaoImp implements IMozoDao {
         return null;
     }
 
+    @Override
+    public void modificarMozo(Mozo mozo) {
+        try {
+            manager.getTransaction().begin();
+            manager.merge(mozo);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }
