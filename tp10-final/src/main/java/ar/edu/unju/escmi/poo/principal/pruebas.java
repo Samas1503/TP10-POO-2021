@@ -1,8 +1,5 @@
 package ar.edu.unju.escmi.poo.principal;
 
-import ar.edu.unju.escmi.poo.dominio.Mozo;
-import ar.edu.unju.escmi.poo.util.MozoUtil;
-
 public class pruebas {
 
     public static void main(String[] args) {
@@ -30,17 +27,34 @@ public class pruebas {
          * System.out.println(clienteUtil.obtenerClientes());
          * System.out.println(clientes);
          */
-
-        Mozo mozo = new Mozo(23549842, "Jarvis", "mi casa 18", true);
-        System.out.println(MozoUtil.obtenerMozo(23549842));
-        System.out.println(mozo);
-
-        System.out.println(mozo.getNombre().equals(MozoUtil.obtenerMozo(23549842).getNombre()));
-        System.out.println(mozo.getDomicilio().equals(MozoUtil.obtenerMozo(23549842).getDomicilio()));
-        System.out.println(mozo.getClass().equals(MozoUtil.obtenerMozo(23549842).getClass()));
-        System.out.println(mozo.getDni() == MozoUtil.obtenerMozo(23549842).getDni());
-        System.out.println(mozo.getEstado() == MozoUtil.obtenerMozo(23549842).getEstado());
-
+        /*
+         * Mozo mozo = new Mozo(23549842, "Jarvis", "mi casa 18", true);
+         * System.out.println(MozoUtil.obtenerMozo(23549842)); System.out.println(mozo);
+         * 
+         * System.out.println(mozo.getNombre().equals(MozoUtil.obtenerMozo(23549842).
+         * getNombre()));
+         * System.out.println(mozo.getDomicilio().equals(MozoUtil.obtenerMozo(23549842).
+         * getDomicilio()));
+         * System.out.println(mozo.getClass().equals(MozoUtil.obtenerMozo(23549842).
+         * getClass())); System.out.println(mozo.getDni() ==
+         * MozoUtil.obtenerMozo(23549842).getDni()); System.out.println(mozo.getEstado()
+         * == MozoUtil.obtenerMozo(23549842).getEstado());
+         */
+        /*
+         * Scanner sc = new Scanner(System.in); String horario; int horas = -1, minutos
+         * = -1;
+         * 
+         * do { System.out.println("Ingrese la hora y minutos de la resera (hh:mm)");
+         * horario = sc.next(); String[] valoresH = horario.split(":"); if
+         * (valoresH.length == 2) { horas = Integer.parseInt(valoresH[0]); if (horas < 0
+         * || horas > 23) { horas = -1;
+         * System.out.println("Ingreso incorrecto. Intente nuevamente."); } minutos =
+         * Integer.parseInt(valoresH[1]); if (minutos < 0 || minutos > 59) { minutos =
+         * -1; System.out.println("Ingreso incorrecto. Intente nuevamente."); } } else {
+         * System.out.println("Ingreso incorrecto. Intente nuevamente."); } } while
+         * (horas == -1 || minutos == -1); LocalTime hora = LocalTime.of(horas,
+         * minutos); System.out.println(hora);
+         */
     }
 
 }

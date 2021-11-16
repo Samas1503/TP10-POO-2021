@@ -96,9 +96,9 @@ public class ReservaUtil {
     public void generarReserva(Cliente cliente) throws Exception {
         if (cliente == null)
             throw new NullPointerException();
-        String nombre;
+        String nombre, horario;
         float total = 0;
-        int comensales, mesas, horas, minutos, id;
+        int comensales, mesas, horas = -1, minutos = -1, id;
         boolean valido = false;
         LocalDate fecha = LocalDate.now();
         Salon salon = null;
@@ -130,12 +130,25 @@ public class ReservaUtil {
                 }
             } while (!valido);
             SalonUtil.modificarSalon(salon);
-
-            System.out.println("Ingrese la hora y minutos de la resera:");
-            System.out.println("Hora:");
-            horas = sc.nextInt();
-            System.out.println("Minutos:");
-            minutos = sc.nextInt();
+            do {
+                System.out.println("Ingrese la hora y minutos de la resera (hh:mm)");
+                horario = sc.next();
+                String[] valoresH = horario.split(":");
+                if (valoresH.length == 2) {
+                    horas = Integer.parseInt(valoresH[0]);
+                    if (horas < 0 || horas > 23) {
+                        horas = -1;
+                        System.out.println("Ingreso incorrecto. Intente nuevamente.");
+                    }
+                    minutos = Integer.parseInt(valoresH[1]);
+                    if (minutos < 0 || minutos > 59) {
+                        minutos = -1;
+                        System.out.println("Ingreso incorrecto. Intente nuevamente.");
+                    }
+                } else {
+                    System.out.println("Ingreso incorrecto. Intente nuevamente.");
+                }
+            } while (horas == -1 || minutos == -1);
             LocalTime hora = LocalTime.of(horas, minutos);
 
             mozoUtil.mostrarMozos();
@@ -177,6 +190,17 @@ public class ReservaUtil {
         }
     }
 
+    public void mostrarReservasPendientes() throws Exception {
+        List<Reserva> lista = new ArrayList<Reserva>();
+        lista = reservaDao.obtenerReservas();
+        if (lista.isEmpty())
+            throw new NullPointerException();
+        for (Reserva r : lista) {
+            if (!r.getEstado())
+                System.out.println(r.toString());
+        }
+    }
+
     public static List<Reserva> obtenerReservas() {
         return reservaDao.obtenerReservas();
     }
@@ -190,7 +214,19 @@ public class ReservaUtil {
         aModificar.getSalon().setMesas(aModificar.getSalon().getMesas() + aModificar.getMesas());
         aModificar.setMesas(0);
         aModificar.getMozo().setEstado(true);
-        aModificar.setTotal((float) 0);
+        String res;
+        int consumido = 0;
+        do {
+            System.out.println("Ingrese el monto de lo consumido en la reserva:");
+            res = sc.next();
+            try {
+                consumido = Integer.parseInt(res);
+            } catch (Exception e) {
+                System.out.println("Debe ingresar un numero");
+            }
+        } while (consumido == 0);
+        aModificar.setTotal(aModificar.getTotal() + consumido);
+
         reservaDao.modificarReserva(aModificar);
     }
 
@@ -199,6 +235,7 @@ public class ReservaUtil {
         aEliminar.getMozo().setEstado(true);
         SalonUtil.modificarSalon(aEliminar.getSalon());
         MozoUtil.modificarMozo(aEliminar.getMozo());
+
         reservaDao.eliminarReserva(aEliminar);
     }
 }

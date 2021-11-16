@@ -29,7 +29,7 @@ public class MenuUtil {
                 System.out.println("*    6- Finalizar Reserva.                                            *");
                 System.out.println("*    7- Consultar Cliente.                                            *");
                 System.out.println("*    8- Listar Reservas.                                              *");
-                System.out.println("*    9- Eliminar Reserva.                                             *");
+                System.out.println("*    9- Cancelar Reserva.                                             *");
                 System.out.println("***********************************************************************");
                 System.out.println("*                              0- Salir.                              *");
                 System.out.println("***********************************************************************");
@@ -40,23 +40,26 @@ public class MenuUtil {
                     System.out.println("Saliendo del programa");
                     break;
                 case 1:
-                    do {
-                        System.out.println("Ingrese el DNI del mozo:");
-                        try {
-                            id = sc.nextInt();
-                            valido = false;
-                        } catch (Exception e) {
-                            System.out.println("Ingreso incorrecto, intente nuevamente.");
-                            valido = true;
-                        }
-                    } while (valido);
-                    sc.nextLine();
-                    System.out.println("Ingrse el Nombre completo del mozo:");
-                    nombre = sc.nextLine();
-                    System.out.println("Ingrse el Domicilio del mozo:");
-                    domicilio = sc.nextLine();
-                    System.out.println(domicilio);
-                    mozoUtil.crearMozo(id, nombre, domicilio);
+                    if (mozoUtil.obtenerMozos().size() <= 6) {
+                        do {
+                            System.out.println("Ingrese el DNI del mozo:");
+                            try {
+                                id = sc.nextInt();
+                                valido = false;
+                            } catch (Exception e) {
+                                System.out.println("Ingreso incorrecto, intente nuevamente.");
+                                valido = true;
+                            }
+                        } while (valido);
+                        sc.nextLine();
+                        System.out.println("Ingrse el Nombre completo del mozo:");
+                        nombre = sc.nextLine();
+                        System.out.println("Ingrse el Domicilio del mozo:");
+                        domicilio = sc.nextLine();
+                        System.out.println(domicilio);
+                        mozoUtil.crearMozo(id, nombre, domicilio);
+                    } else
+                        System.out.println("Ya no se pueden cargar mas Mozos");
                     break;
                 case 2:
                     mozoUtil.mostrarMozos();
@@ -189,7 +192,7 @@ public class MenuUtil {
                     break;
                 case 9:
                     try {
-                        reservaUtil.mostrarReservas();
+                        reservaUtil.mostrarReservasPendientes();
                         Reserva reserva = null;
                         do {
                             System.out.println("Ingrese el id de la reserva a eliminar.");
