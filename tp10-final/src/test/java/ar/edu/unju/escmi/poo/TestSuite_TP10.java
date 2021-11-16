@@ -7,7 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import junit.framework.TestCase;
 
 @RunWith(Suite.class)
-@SuiteClasses({})
+@SuiteClasses({ ClienteUtilTest.class, MozoUtilTest.class, ReservaUtilTest.class })
 public class TestSuite_TP10 extends TestCase {
 
 }

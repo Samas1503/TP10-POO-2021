@@ -8,8 +8,7 @@ import ar.edu.unju.escmi.poo.dominio.Reserva;
 import ar.edu.unju.escmi.poo.dominio.Salon;
 
 public class SalonUtil {
-    SalonDaoImp salonDao = new SalonDaoImp();
-    ReservaUtil reservaUtil;
+    static SalonDaoImp salonDao = new SalonDaoImp();
 
     public void pregargarSalones() {
         crearSalon("Salon de Mayko", 20);
@@ -22,7 +21,7 @@ public class SalonUtil {
         salonDao.guardarSalon(nuevo);
     }
 
-    public Salon obtenerSalon(String nombre) {
+    public static Salon obtenerSalon(String nombre) {
         return salonDao.obtenerSalon(nombre);
     }
 
@@ -38,14 +37,16 @@ public class SalonUtil {
         }
     }
 
-    public void mostrarSalones() {
+    public void mostrarSalones() throws Exception {
         List<Salon> lista = new ArrayList<Salon>();
         lista = salonDao.obtenerSalones();
+        if (lista.isEmpty())
+            throw new NullPointerException();
         for (Salon s : lista)
             System.out.println(s.toString());
     }
 
-    public void mostrarSalonesDisponibles(int m) {
+    public static void mostrarSalonesDisponibles(int m) {
         List<Salon> lista = new ArrayList<Salon>();
         lista = salonDao.obtenerSalones();
         for (Salon s : lista) {
@@ -64,7 +65,7 @@ public class SalonUtil {
 
     public int obtenerMesasOcupadas(String n) {
         int m = 0;
-        List<Reserva> reservas = reservaUtil.obtenerReservas();
+        List<Reserva> reservas = ReservaUtil.obtenerReservas();
         for (Reserva r : reservas)
             if (r.getSalon().getNombre().equals(n))
                 m += r.getMesas();
@@ -73,10 +74,14 @@ public class SalonUtil {
 
     public int obtenerComensales(String n) {
         int c = 0;
-        List<Reserva> reservas = reservaUtil.obtenerReservas();
+        List<Reserva> reservas = ReservaUtil.obtenerReservas();
         for (Reserva r : reservas)
             if (r.getSalon().getNombre().equals(n))
                 c += r.getComensales();
         return c;
+    }
+
+    public static void modificarSalon(Salon salon) {
+        salonDao.modificarSalon(salon);
     }
 }

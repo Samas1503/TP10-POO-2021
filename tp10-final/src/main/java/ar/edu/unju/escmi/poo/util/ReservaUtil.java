@@ -13,10 +13,9 @@ import ar.edu.unju.escmi.poo.dominio.Reserva;
 import ar.edu.unju.escmi.poo.dominio.Salon;
 
 public class ReservaUtil {
-    ReservaDaoImp reservaDao;
-    SalonUtil salonUtil;
-    MozoUtil mozoUtil;
-    ClienteUtil clienteUtil;
+    static ReservaDaoImp reservaDao = new ReservaDaoImp();
+    MozoUtil mozoUtil = new MozoUtil();
+    ClienteUtil clienteUtil = new ClienteUtil();
     Scanner sc = new Scanner(System.in);
 
     public void precargarReservas() {
@@ -37,10 +36,13 @@ public class ReservaUtil {
         else
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
-        cliente = clienteUtil.obtenerParticular(44706400);
-        salon = salonUtil.obtenerSalon("Salon de Mayko");
-        mozo = mozoUtil.obtenerMozo(15684892);
+        cliente = ClienteUtil.obtenerParticular(44706400);
+        salon = SalonUtil.obtenerSalon("Salon de Mayko");
+        salon.setMesas(salon.getMesas() - mesas);
+        mozo = MozoUtil.obtenerMozo(15684892);
         mozo.setEstado(false);
+        SalonUtil.modificarSalon(salon);
+        MozoUtil.modificarMozo(mozo);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
 
         comensales = 2;
@@ -49,10 +51,13 @@ public class ReservaUtil {
         else
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
-        cliente = clienteUtil.obtenerParticular(44700523);
-        salon = salonUtil.obtenerSalon("Salon de Samuel");
-        mozo = mozoUtil.obtenerMozo(35489120);
+        cliente = ClienteUtil.obtenerParticular(44700523);
+        salon = SalonUtil.obtenerSalon("Salon de Samuel");
+        salon.setMesas(salon.getMesas() - mesas);
+        mozo = MozoUtil.obtenerMozo(35489120);
         mozo.setEstado(false);
+        SalonUtil.modificarSalon(salon);
+        MozoUtil.modificarMozo(mozo);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
 
         // *Precarga de Reservas de Empresas
@@ -63,10 +68,13 @@ public class ReservaUtil {
         else
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
-        cliente = clienteUtil.obtenerEmpresa(123456789);
-        salon = salonUtil.obtenerSalon("Salon de Santy");
-        mozo = mozoUtil.obtenerMozo(32654781);
+        cliente = ClienteUtil.obtenerEmpresa(123456789);
+        salon = SalonUtil.obtenerSalon("Salon de Santy");
+        salon.setMesas(salon.getMesas() - mesas);
+        mozo = MozoUtil.obtenerMozo(32654781);
         mozo.setEstado(false);
+        SalonUtil.modificarSalon(salon);
+        MozoUtil.modificarMozo(mozo);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
 
         comensales = 30;
@@ -75,14 +83,19 @@ public class ReservaUtil {
         else
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
-        cliente = clienteUtil.obtenerEmpresa(789456132);
-        salon = salonUtil.obtenerSalon("Salon de Mayko");
-        mozo = mozoUtil.obtenerMozo(23549842);
+        cliente = ClienteUtil.obtenerEmpresa(789456132);
+        salon = SalonUtil.obtenerSalon("Salon de Mayko");
+        salon.setMesas(salon.getMesas() - mesas);
+        mozo = MozoUtil.obtenerMozo(23549842);
         mozo.setEstado(false);
+        SalonUtil.modificarSalon(salon);
+        MozoUtil.modificarMozo(mozo);
         crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
     }
 
-    public void generarReserva(Cliente cliente) {
+    public void generarReserva(Cliente cliente) throws Exception {
+        if (cliente == null)
+            throw new NullPointerException();
         String nombre;
         float total = 0;
         int comensales, mesas, horas, minutos, id;
@@ -93,6 +106,7 @@ public class ReservaUtil {
 
         System.out.println("Ingrese el numero de comensales:");
         comensales = sc.nextInt();
+        sc.nextLine();
 
         if (comensales % 4 == 0)
             mesas = comensales / 4;
@@ -100,20 +114,22 @@ public class ReservaUtil {
             mesas = (comensales / 4) + 1;
         total = mesas * 50;
         try {
-            salonUtil.mostrarSalonesDisponibles(mesas);
+            SalonUtil.mostrarSalonesDisponibles(mesas);
             do {
                 try {
                     System.out.println("Ingrese el nombre del salon del cual desea reservar.");
                     nombre = sc.nextLine();
-                    sc.next();
-                    salon = salonUtil.obtenerSalon(nombre);
-                    if (salon != null)
+                    salon = SalonUtil.obtenerSalon(nombre);
+                    if (salon != null) {
                         valido = true;
+                        salon.setMesas(salon.getMesas() - mesas);
+                    }
                 } catch (Exception e) {
                     System.out.println("Salon no encontrado. Intente nuevamente.");
                     valido = false;
                 }
-            } while (salon == null);
+            } while (!valido);
+            SalonUtil.modificarSalon(salon);
 
             System.out.println("Ingrese la hora y minutos de la resera:");
             System.out.println("Hora:");
@@ -127,7 +143,7 @@ public class ReservaUtil {
                 try {
                     System.out.println("Ingrese el id del mozo que atendera la reserva:");
                     id = sc.nextInt();
-                    mozo = mozoUtil.obtenerMozo(id);
+                    mozo = MozoUtil.obtenerMozo(id);
                     if (mozo != null) {
                         valido = true;
                         mozo.setEstado(false);
@@ -137,7 +153,7 @@ public class ReservaUtil {
                     valido = false;
                 }
             } while (!valido);
-
+            MozoUtil.modificarMozo(mozo);
             crearReserva(comensales, mesas, total, false, fecha, hora, cliente, salon, mozo);
 
         } catch (Exception e) {
@@ -151,19 +167,21 @@ public class ReservaUtil {
         reservaDao.guardarReserva(nueva);
     }
 
-    public void mostrarReservas() {
+    public void mostrarReservas() throws Exception {
         List<Reserva> lista = new ArrayList<Reserva>();
         lista = reservaDao.obtenerReservas();
+        if (lista.isEmpty())
+            throw new NullPointerException();
         for (Reserva r : lista) {
             System.out.println(r.toString());
         }
     }
 
-    public List<Reserva> obtenerReservas() {
+    public static List<Reserva> obtenerReservas() {
         return reservaDao.obtenerReservas();
     }
 
-    public Reserva obtenerReserva(int id) {
+    public static Reserva obtenerReserva(int id) {
         return reservaDao.obtenerReserva(id);
     }
 
@@ -173,9 +191,14 @@ public class ReservaUtil {
         aModificar.setMesas(0);
         aModificar.getMozo().setEstado(true);
         aModificar.setTotal((float) 0);
+        reservaDao.modificarReserva(aModificar);
     }
 
     public void eliminarReserva(Reserva aEliminar) {
+        aEliminar.getSalon().setMesas(aEliminar.getSalon().getMesas() + aEliminar.getMesas());
+        aEliminar.getMozo().setEstado(true);
+        SalonUtil.modificarSalon(aEliminar.getSalon());
+        MozoUtil.modificarMozo(aEliminar.getMozo());
         reservaDao.eliminarReserva(aEliminar);
     }
 }

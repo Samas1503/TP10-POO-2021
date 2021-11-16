@@ -3,6 +3,7 @@ package ar.edu.unju.escmi.poo.dominio;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,15 +35,15 @@ public class Reserva {
 	private LocalTime hora;
 
 	// relationships
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "nombre_salon")
 	private Salon salon;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "dni_mozo")
 	private Mozo mozo;
 
@@ -148,7 +149,91 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [idreserva=" + idReserva + ", comensales=" + comensales + ", mesas=" + mesas + ", total="
-				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + ", cliente=" + cliente + "]";
+				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + " " + cliente + " " + salon
+				+ " " + mozo + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+		result = prime * result + comensales;
+		result = prime * result + (estado ? 1231 : 1237);
+		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
+		result = prime * result + ((hora == null) ? 0 : hora.hashCode());
+		result = prime * result + idReserva;
+		result = prime * result + mesas;
+		result = prime * result + ((mozo == null) ? 0 : mozo.hashCode());
+		result = prime * result + ((salon == null) ? 0 : salon.hashCode());
+		result = prime * result + ((total == null) ? 0 : total.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Reserva)) {
+			return false;
+		}
+		Reserva other = (Reserva) obj;
+		if (cliente == null) {
+			if (other.cliente != null) {
+				return false;
+			}
+		} else if (!cliente.equals(other.cliente)) {
+			return false;
+		}
+		if (comensales != other.comensales) {
+			return false;
+		}
+		if (estado != other.estado) {
+			return false;
+		}
+		if (fecha == null) {
+			if (other.fecha != null) {
+				return false;
+			}
+		} else if (!fecha.equals(other.fecha)) {
+			return false;
+		}
+		if (hora == null) {
+			if (other.hora != null) {
+				return false;
+			}
+		} else if (!hora.equals(other.hora)) {
+			return false;
+		}
+		if (idReserva != other.idReserva) {
+			return false;
+		}
+		if (mesas != other.mesas) {
+			return false;
+		}
+		if (mozo == null) {
+			if (other.mozo != null) {
+				return false;
+			}
+		} else if (!mozo.equals(other.mozo)) {
+			return false;
+		}
+		if (salon == null) {
+			if (other.salon != null) {
+				return false;
+			}
+		} else if (!salon.equals(other.salon)) {
+			return false;
+		}
+		if (total == null) {
+			if (other.total != null) {
+				return false;
+			}
+		} else if (!total.equals(other.total)) {
+			return false;
+		}
+		return true;
 	}
 
 }

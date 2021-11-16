@@ -40,7 +40,7 @@ public class ReservaDaoImp implements IReservaDao {
     @Override
     public Reserva obtenerReserva(int id) {
         try {
-            Query query = manager.createQuery("Select r from Reserva where id = :id");
+            Query query = manager.createQuery("Select r from Reserva r where id = :id");
             query.setParameter("id", id);
             return (Reserva) query.getSingleResult();
         } catch (Exception e) {
@@ -53,6 +53,17 @@ public class ReservaDaoImp implements IReservaDao {
         try {
             manager.getTransaction().begin();
             manager.remove(eliminada);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void modificarReserva(Reserva aModificar) {
+        try {
+            manager.getTransaction().begin();
+            manager.merge(aModificar);
             manager.getTransaction().commit();
         } catch (Exception e) {
             System.out.println(e);

@@ -48,4 +48,35 @@ public class Salon {
 		return "Salon [nombre=" + nombre + ", mesas=" + mesas + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + mesas;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Salon)) {
+			return false;
+		}
+		Salon other = (Salon) obj;
+		if (mesas != other.mesas) {
+			return false;
+		}
+		if (nombre == null) {
+			if (other.nombre != null) {
+				return false;
+			}
+		} else if (!nombre.equals(other.nombre)) {
+			return false;
+		}
+		return true;
+	}
+
 }

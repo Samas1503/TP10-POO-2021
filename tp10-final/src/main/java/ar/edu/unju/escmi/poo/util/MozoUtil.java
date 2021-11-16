@@ -8,7 +8,7 @@ import ar.edu.unju.escmi.poo.dominio.Mozo;
 
 public class MozoUtil {
     Scanner sc = new Scanner(System.in);
-    MozoDaoImp mozoDao;
+    static MozoDaoImp mozoDao = new MozoDaoImp();
 
     public void precargarMozos() {
         crearMozo(23549842, "Jarvis", "mi casa 18");
@@ -27,16 +27,22 @@ public class MozoUtil {
 
     public void mostrarMozos() {
         List<Mozo> lista = mozoDao.obtenerMozos();
-        for (Mozo m : lista)
-            System.out.println(m.toString());
-
+        if (!lista.isEmpty())
+            for (Mozo m : lista)
+                System.out.println(m.toString());
+        else
+            System.out.println("No hay Mozos Registrados.");
     }
 
     public List<Mozo> obtenerMozos() {
         return mozoDao.obtenerMozos();
     }
 
-    public Mozo obtenerMozo(int dni) {
+    public static Mozo obtenerMozo(int dni) {
         return mozoDao.obtenerMozo(dni);
+    }
+
+    public static void modificarMozo(Mozo mozo) {
+        mozoDao.modificarMozo(mozo);
     }
 }

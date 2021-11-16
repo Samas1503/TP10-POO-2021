@@ -41,7 +41,7 @@ public class ClienteDaoImp implements IClienteDao {
     @Override
     public Particular obtenerClienteParticular(int dni) {
         try {
-            Query query = manager.createQuery("Select c from Cliente where dni = :dni");
+            Query query = manager.createQuery("SELECT c FROM Cliente c " + " WHERE c.dni = :dni ");
             query.setParameter("dni", dni);
             return (Particular) query.getSingleResult();
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class ClienteDaoImp implements IClienteDao {
     @Override
     public Empresa obtenerClienteEmpresa(int cuit) {
         try {
-            Query query = manager.createQuery("Select c from Cliente where cuit = :cuit");
+            Query query = manager.createQuery("SELECT c FROM Cliente c " + " WHERE c.cuit = :cuit ");
             query.setParameter("cuit", cuit);
             return (Empresa) query.getSingleResult();
         } catch (Exception e) {

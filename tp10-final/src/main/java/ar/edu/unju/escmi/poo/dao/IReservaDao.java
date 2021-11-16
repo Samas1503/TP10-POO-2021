@@ -11,5 +11,8 @@ public interface IReservaDao {
     public List<Reserva> obtenerReservas();
 
     public Reserva obtenerReserva(int id);
+
+    public void modificarReserva(Reserva aModificar);
+
     public void eliminarReserva(Reserva eliminada);
 }

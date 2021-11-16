@@ -19,3 +19,4 @@
 #
 
 target/classes/META-INF/persistence.xml
+/target/
