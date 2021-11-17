@@ -9,7 +9,7 @@ import ar.edu.unju.escmi.poo.dominio.Salon;
 
 public class MenuUtil {
     @SuppressWarnings("static-access")
-	public void menu() {
+	public static void menu() {
         Scanner sc = new Scanner(System.in);
         MozoUtil mozoUtil = new MozoUtil();
         SalonUtil salonUtil = new SalonUtil();
