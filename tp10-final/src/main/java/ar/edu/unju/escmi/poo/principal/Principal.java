@@ -26,6 +26,8 @@ public class Principal {
         reservaUtil.precargarReservas();
         */
         // menu
+    	
+    	System.out.println("anasheee");
         MenuUtil.menu();
     }
 }
