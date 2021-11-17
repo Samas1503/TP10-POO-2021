@@ -6,6 +6,7 @@ import ar.edu.unju.escmi.poo.util.MozoUtil;
 import ar.edu.unju.escmi.poo.util.ReservaUtil;
 import ar.edu.unju.escmi.poo.util.SalonUtil;
 
+
 public class Principal {
     public static void main(String[] args) {
         ClienteUtil clienteUtil = new ClienteUtil();
@@ -15,7 +16,8 @@ public class Principal {
         MenuUtil menuUtil = new MenuUtil();
 
         // usar primera vez
-
+        
+        /*
         // clientes
         clienteUtil.precargarClientes();
 
@@ -27,7 +29,7 @@ public class Principal {
 
         // reservas
         reservaUtil.precargarReservas();
-
+        */
         // menu
         menuUtil.menu();
     }

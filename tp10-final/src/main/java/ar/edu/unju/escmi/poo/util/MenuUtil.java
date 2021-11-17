@@ -6,8 +6,10 @@ import ar.edu.unju.escmi.poo.dominio.Cliente;
 import ar.edu.unju.escmi.poo.dominio.Reserva;
 import ar.edu.unju.escmi.poo.dominio.Salon;
 
+
 public class MenuUtil {
-    public void menu() {
+    @SuppressWarnings("static-access")
+	public void menu() {
         Scanner sc = new Scanner(System.in);
         MozoUtil mozoUtil = new MozoUtil();
         SalonUtil salonUtil = new SalonUtil();
@@ -40,7 +42,7 @@ public class MenuUtil {
                     System.out.println("Saliendo del programa");
                     break;
                 case 1:
-                    if (mozoUtil.obtenerMozos().size() <= 6) {
+                    if (mozoUtil.obtenerMozos().size() < 6) {
                         do {
                             System.out.println("Ingrese el DNI del mozo:");
                             try {
@@ -56,17 +58,16 @@ public class MenuUtil {
                         nombre = sc.nextLine();
                         System.out.println("Ingrse el Domicilio del mozo:");
                         domicilio = sc.nextLine();
-                        System.out.println(domicilio);
                         mozoUtil.crearMozo(id, nombre, domicilio);
                     } else
                         System.out.println("Ya no se pueden cargar mas Mozos");
                     break;
                 case 2:
-                    mozoUtil.mostrarMozos();
+                    MozoUtil.mostrarMozos();
                     break;
                 case 3:
                     try {
-                        salonUtil.mostrarSalones();
+                        salonUtil.obtenerSalones().stream().forEach(n -> System.out.println(n.getNombre()));
                         System.out.println("Ingrese el nombre del salon al que desea consultar.");
                         nombre = sc.nextLine();
                         Salon buscado = SalonUtil.obtenerSalon(nombre);
@@ -82,7 +83,7 @@ public class MenuUtil {
                 case 4:
                     try {
                         do {
-                            salonUtil.mostrarSalones();
+                        	salonUtil.obtenerSalones().stream().forEach(n -> System.out.println(n.getNombre()));
                             System.out.println("Ingrese el nombre del salon al que desea consultar.");
                             nombre = sc.nextLine();
                             if (salonUtil.verificarSalon(nombre)) {
@@ -93,7 +94,7 @@ public class MenuUtil {
                             } else {
                                 System.out.println("El salon ingresado no existe. Desea intentar nuevamente? [si/no]");
                                 r = sc.nextLine();
-                                sc.next();
+               
                             }
                         } while (r.equals("si"));
                     } catch (Exception e) {
@@ -101,49 +102,43 @@ public class MenuUtil {
                     }
                     break;
                 case 5:
-                    if (salonUtil.obtenerSalones().isEmpty()) {
+                	//verificamos las existencias de salones y mozos
+                	
+                	if (SalonUtil.obtenerSalones().isEmpty()) {
                         System.out.println("No hay salones cargados");
                         break;
                     } else {
-                        if (mozoUtil.obtenerMozos().isEmpty()) {
+                        if (MozoUtil.obtenerMozos().isEmpty()) {
                             System.out.println("No hay mozos cargados");
                             break;
+                        }else
+                        {
+                        	if(MozoUtil.obtenerUnLibre() == null)
+                        	{
+                        		System.out.println("no hay mozos disponibles");
+                        		break;
+                        	}
+                        		
+                        	
                         }
                     }
+                    
+                    //se busca un cliente
                     System.out.println("Ingrese el DNI o CUIT del Cliente:");
                     id = sc.nextInt();
                     sc.nextLine();
                     try {
                         Cliente particular = ClienteUtil.obtenerParticular(id);
-                        System.out.println("Cliente encontrado. Ingrese los datos de la reserva.");
                         reservaUtil.generarReserva(particular);
                     } catch (Exception e) {
                         try {
                             Cliente empresa = ClienteUtil.obtenerEmpresa(id);
-                            System.out.println("Cliente encontrado. Ingrese los datos de la reserva.");
                             reservaUtil.generarReserva(empresa);
-                        } catch (Exception f) {
+                        } catch (Exception f) 
+                        // en caso de no tener registrado al cliente se registra al momento
+                        {
                             System.out.println("Cliente no encontrado. Se registrara un cliente nuevo.");
-                            do {
-                                System.out.println("El cliente es particular o empresa?");
-                                r = sc.nextLine();
-                            } while (!r.equals("particular") || !r.equals("empresa"));
-                            System.out.println("Ingrese el Nombre del cliente:");
-                            nombre = sc.nextLine();
-                            sc.next();
-                            System.out.println("Ingrese el Email del cliente:");
-                            email = sc.next();
-                            System.out.println("Ingrse el Telefono del cliente:");
-                            telefono = sc.nextInt();
-                            sc.nextLine();
-                            Cliente cliente;
-                            if (r.equals("particular")) {
-                                clienteUtil.crearClienteParticular(id, nombre, email, telefono);
-                                cliente = ClienteUtil.obtenerParticular(id);
-                            } else {
-                                clienteUtil.crearClienteEmpresa(id, nombre, email, telefono);
-                                cliente = ClienteUtil.obtenerEmpresa(id);
-                            }
+                            Cliente cliente = ClienteUtil.generarNuevoCliente();
                             reservaUtil.generarReserva(cliente);
                         }
                     }
@@ -168,7 +163,7 @@ public class MenuUtil {
                                 valido = false;
                             }
                         } while (!valido);
-                        reservaUtil.modificarReserva(reserva);
+                        reservaUtil.finalizarReserva(reserva);
                     } catch (Exception e) {
                         System.out.println("No hay reservas registradas.");
                     }

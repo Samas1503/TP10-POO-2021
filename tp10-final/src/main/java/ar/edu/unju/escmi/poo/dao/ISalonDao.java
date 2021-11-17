@@ -13,4 +13,6 @@ public interface ISalonDao {
     public Salon obtenerSalon(String nombre);
 
     public void modificarSalon(Salon salon);
+    
+    public List<Salon> obtenerSalonesDisponibles(int m);
 }
