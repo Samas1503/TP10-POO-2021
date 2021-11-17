@@ -59,4 +59,20 @@ public class MozoDaoImp implements IMozoDao {
         }
     }
 
+	@Override
+	public Mozo obtenerDisponible() {
+		 try {
+	            Query query = manager.createQuery("SELECT m FROM Mozo m " + " WHERE m.estado = :estado");
+	            query.setParameter("estado", true);
+	            @SuppressWarnings("unchecked")
+				List<Mozo> libres = (List<Mozo>)query.getResultList();
+	            if (!libres.isEmpty())
+	            	return libres.get(0); 
+	        } catch (Exception e) {
+	            System.out.println(e);
+	
+	        }
+		return null;
+	}
+
 }

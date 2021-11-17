@@ -13,4 +13,6 @@ public interface IMozoDao {
     public Mozo obtenerMozo(int dni);
 
     public void modificarMozo(Mozo mozo);
+    
+    public Mozo obtenerDisponible();
 }

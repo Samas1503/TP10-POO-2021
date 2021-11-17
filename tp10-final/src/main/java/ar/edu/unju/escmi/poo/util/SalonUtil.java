@@ -46,16 +46,20 @@ public class SalonUtil {
             System.out.println(s.toString());
     }
 
-    public static void mostrarSalonesDisponibles(int m) {
+    
+    public static boolean mostrarSalonesDisponibles(int m) {
         List<Salon> lista = new ArrayList<Salon>();
-        lista = salonDao.obtenerSalones();
-        for (Salon s : lista) {
-            if (s.getMesas() < m)
-                lista.remove(s);
-        }
+        lista = salonDao.obtenerSalonesDisponibles(m);
+        if(!lista.isEmpty()) {
+        	lista.stream().forEach(n -> System.out.println(n.getNombre()));
+        	return true;
+        }	
+        else
+        	return false;
+        
     }
 
-    public List<Salon> obtenerSalones() {
+    public static List<Salon> obtenerSalones() {
         return salonDao.obtenerSalones();
     }
 
@@ -76,12 +80,16 @@ public class SalonUtil {
         int c = 0;
         List<Reserva> reservas = ReservaUtil.obtenerReservas();
         for (Reserva r : reservas)
-            if (r.getSalon().getNombre().equals(n))
-                c += r.getComensales();
+            if (r.getSalon().getNombre().equals(n)) {
+            	if(r.getEstado() == false)
+            		c += r.getComensales();
+            }
+            	
         return c;
     }
 
     public static void modificarSalon(Salon salon) {
         salonDao.modificarSalon(salon);
     }
+
 }

@@ -149,8 +149,9 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [idreserva=" + idReserva + ", comensales=" + comensales + ", mesas=" + mesas + ", total="
-				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + " " + cliente + " " + salon
-				+ " " + mozo + "]";
+				+ total + ", estado=" + estado + ", fecha=" + fecha + ", hora=" + hora + ", cliente " + cliente.getNombre() 
+				+ ", salon " + salon.getNombre()
+				+ ", mozo " + mozo.getNombre() + "]";
 	}
 
 	@Override

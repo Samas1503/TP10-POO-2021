@@ -9,6 +9,7 @@ import ar.edu.unju.escmi.poo.conf.EmfSingleton;
 import ar.edu.unju.escmi.poo.dao.ISalonDao;
 import ar.edu.unju.escmi.poo.dominio.Salon;
 
+
 public class SalonDaoImp implements ISalonDao {
 
     private static EntityManager manager = EmfSingleton.getInstace().getEmf().createEntityManager();
@@ -59,5 +60,20 @@ public class SalonDaoImp implements ISalonDao {
             System.out.println(e);
         }
     }
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Salon> obtenerSalonesDisponibles(int m) {
+		try {
+            Query query = manager.createQuery("SELECT s FROM Salon s" + " WHERE s.mesas >= :m");
+            query.setParameter("m", m);
+            return (List<Salon>) query.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+	}
+    
+    
 
 }

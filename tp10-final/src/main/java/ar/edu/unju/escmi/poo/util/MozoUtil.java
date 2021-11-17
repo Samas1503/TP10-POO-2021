@@ -1,5 +1,6 @@
 package ar.edu.unju.escmi.poo.util;
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,13 +12,11 @@ public class MozoUtil {
     static MozoDaoImp mozoDao = new MozoDaoImp();
 
     public void precargarMozos() {
-        crearMozo(23549842, "Jarvis", "mi casa 18");
-        crearMozo(15684892, "Ana", "mi casa 38");
-        crearMozo(35489120, "Maria", "mi casa 58");
-        crearMozo(40654873, "Eliot", "mi casa 78");
-        crearMozo(20174689, "Juan", "mi casa 98");
-        crearMozo(32654781, "Pedro", "mi casa 28");
-        crearMozo(35548951, "Manuela", "mi casa 48");
+        crearMozo(1, "Jarvis", "mi casa 18");
+        crearMozo(2, "Ana", "mi casa 38");
+        crearMozo(3, "Maria", "mi casa 58");
+        crearMozo(4, "Eliot", "mi casa 78");
+        crearMozo(5, "Juan", "mi casa 98");
     }
 
     public void crearMozo(int dni, String nombre, String domicilio) {
@@ -25,7 +24,7 @@ public class MozoUtil {
         mozoDao.guardarMozo(nuevo);
     }
 
-    public void mostrarMozos() {
+    public static void mostrarMozos() {
         List<Mozo> lista = mozoDao.obtenerMozos();
         if (!lista.isEmpty())
             for (Mozo m : lista)
@@ -34,7 +33,7 @@ public class MozoUtil {
             System.out.println("No hay Mozos Registrados.");
     }
 
-    public List<Mozo> obtenerMozos() {
+    public static List<Mozo> obtenerMozos() {
         return mozoDao.obtenerMozos();
     }
 
@@ -44,5 +43,9 @@ public class MozoUtil {
 
     public static void modificarMozo(Mozo mozo) {
         mozoDao.modificarMozo(mozo);
+    }
+    
+    public static Mozo obtenerUnLibre() {
+		return mozoDao.obtenerDisponible();    	
     }
 }
