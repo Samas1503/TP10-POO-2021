@@ -14,20 +14,19 @@ public class Principal {
         
         /*
         // clientes
-        clienteUtil.precargarClientes();
+        ClienteUtil.precargarClientes();
 
         // mozos
-        mozoUtil.precargarMozos();
+        MozoUtil.precargarMozos();
 
         // salons
-        salonUtil.pregargarSalones();
+        SalonUtil.pregargarSalones();
 
         // reservas
-        reservaUtil.precargarReservas();
-        */
+        ReservaUtil.precargarReservas();
+        
         // menu
-    	
-    	System.out.println("anasheee");
+    	*/
         MenuUtil.menu();
     }
 }
