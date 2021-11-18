@@ -12,7 +12,7 @@ public class Principal {
 
         // en caso de que no haya datos cargados, usa la primera vez
         
-    	if(ReservaUtil.obtenerReservas().isEmpty()) {
+    	
         // clientes
         ClienteUtil.precargarClientes();
 
@@ -26,7 +26,7 @@ public class Principal {
         ReservaUtil.precargarReservas();
         
         // menu
-    	}
+    	
         MenuUtil.menu();
     }
 }

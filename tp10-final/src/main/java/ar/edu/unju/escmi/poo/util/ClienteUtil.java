@@ -107,7 +107,7 @@ public class ClienteUtil {
         return cliente;
     }
 
-    public List<Cliente> obtenerClientes() {
+    public static List<Cliente> obtenerClientes() {
         return clienteDao.obtenerClientes();
     }
 
