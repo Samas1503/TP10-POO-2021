@@ -18,7 +18,7 @@ public class ReservaUtil {
 	static ReservaDaoImp reservaDao = new ReservaDaoImp();
 	Scanner sc = new Scanner(System.in);
 
-	public void precargarReservas() {
+	public static void precargarReservas() {
 		// variables
 		Cliente cliente;
 		Salon salon;
@@ -151,7 +151,7 @@ public class ReservaUtil {
 
 	}
 
-	public void crearReserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha, LocalTime hora,
+	public static void crearReserva(int comensales, int mesas, Float total, boolean estado, LocalDate fecha, LocalTime hora,
 			Cliente cliente, Salon salon, Mozo mozo) {
 		Reserva nueva = new Reserva(comensales, mesas, total, false, fecha, hora, cliente, salon, mozo);
 		reservaDao.guardarReserva(nueva);

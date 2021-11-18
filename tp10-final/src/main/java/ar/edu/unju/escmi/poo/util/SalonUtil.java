@@ -10,13 +10,13 @@ import ar.edu.unju.escmi.poo.dominio.Salon;
 public class SalonUtil {
     static SalonDaoImp salonDao = new SalonDaoImp();
 
-    public void pregargarSalones() {
+    public static void pregargarSalones() {
         crearSalon("Salon de Mayko", 20);
         crearSalon("Salon de Santy", 10);
         crearSalon("Salon de Samuel", 15);
     }
 
-    public void crearSalon(String nombre, int mesas) {
+    public static void crearSalon(String nombre, int mesas) {
         Salon nuevo = new Salon(nombre, mesas);
         salonDao.guardarSalon(nuevo);
     }

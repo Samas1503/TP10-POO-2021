@@ -11,7 +11,7 @@ public class MozoUtil {
     Scanner sc = new Scanner(System.in);
     static MozoDaoImp mozoDao = new MozoDaoImp();
 
-    public void precargarMozos() {
+    public static void precargarMozos() {
         crearMozo(1, "Jarvis", "mi casa 18");
         crearMozo(2, "Ana", "mi casa 38");
         crearMozo(3, "Maria", "mi casa 58");
@@ -19,7 +19,7 @@ public class MozoUtil {
         crearMozo(5, "Juan", "mi casa 98");
     }
 
-    public void crearMozo(int dni, String nombre, String domicilio) {
+    public static void crearMozo(int dni, String nombre, String domicilio) {
         Mozo nuevo = new Mozo(dni, nombre, domicilio, true);
         mozoDao.guardarMozo(nuevo);
     }
