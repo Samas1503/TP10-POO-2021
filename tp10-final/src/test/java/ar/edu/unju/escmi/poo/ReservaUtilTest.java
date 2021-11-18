@@ -33,9 +33,7 @@ public class ReservaUtilTest extends TestCase {
 
 	@Test
 	public void testObtenerUnaReserva() {
-		Cliente cliente = ClienteUtil.obtenerParticular(44706400);
-		Salon salon = SalonUtil.obtenerSalon("Salon de Mayko"); // SalonUtil.obtenerSalon("Salon de Mayko");
-		Mozo mozo = MozoUtil.obtenerMozo(15684892);
+		
 		Reserva reserva2 = ReservaUtil.obtenerReserva(1);
 		reserva2.setFecha(null);
 		reserva2.setHora(null);

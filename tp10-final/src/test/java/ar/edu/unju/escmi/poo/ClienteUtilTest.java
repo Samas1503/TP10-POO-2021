@@ -30,16 +30,16 @@ public class ClienteUtilTest extends TestCase {
 
 	@Test
 	public void testObtenerParticularTest() {
-		Particular particular = new Particular("Mayko Hernandez", "hola@pvto.com", 123, 44706681);
+		Particular particular = new Particular("Mayko Hernandez", "hola@pvto.com", 123, 1);
 		particular.setId(1);
-		assertEquals(particular, ClienteUtil.obtenerParticular(44706681));
+		assertEquals(particular, ClienteUtil.obtenerParticular(1));
 	}
 
 	@Test
 	public void testObtenerEmpresaTest() {
-		Empresa empresa = new Empresa("The Wester", "thewester@ea.com", 852, 789456123);
+		Empresa empresa = new Empresa("The Wester", "thewester@ea.com", 852, 7);
 		empresa.setId(7);
-		Empresa empresa2 = ClienteUtil.obtenerEmpresa(789456123);
+		Empresa empresa2 = ClienteUtil.obtenerEmpresa(7);
 		assertEquals(empresa, empresa2);
 	}
 }

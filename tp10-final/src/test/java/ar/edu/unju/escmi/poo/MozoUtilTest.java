@@ -22,15 +22,14 @@ public class MozoUtilTest extends TestCase {
 
 	@Test
 	public void testObtenerMozosTest() {
-		MozoUtil mozoUtil = new MozoUtil();
 
-		assertNotNull(mozoUtil.obtenerMozos());
+		assertNotNull(MozoUtil.obtenerMozos());
 	}
 
 	@Test
 	public void testObtenerUnMozoTest() {
-		Mozo mozo = new Mozo(23549842, "Jarvis", "mi casa 18", true);
-		Mozo mozo2 = MozoUtil.obtenerMozo(23549842);
+		Mozo mozo = new Mozo(1, "Jarvis", "mi casa 18", true);
+		Mozo mozo2 = MozoUtil.obtenerMozo(1);
 		assertEquals(mozo, mozo2);
 	}
 
