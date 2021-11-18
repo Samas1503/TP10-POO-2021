@@ -82,7 +82,8 @@ public class ReservaUtil {
 		crearReserva(comensales, mesas, total, false, fecha, hota, cliente, salon, mozo);
 	}
 
-	public void generarReserva(Cliente cliente) throws Exception {
+	public static void generarReserva(Cliente cliente) throws Exception {
+		Scanner sc = new Scanner(System.in);
 		if (cliente == null)
 			throw new NullPointerException();
 		String nombre;
@@ -104,6 +105,7 @@ public class ReservaUtil {
 		else
 			mesas = (comensales / 4) + 1;
 		total = mesas * 50;
+		
 		
 		//se muestran los salones disponibles, en caso de que no se termina el metodo
 		
@@ -128,6 +130,7 @@ public class ReservaUtil {
 				valido = false;
 			}
 		} while (!valido);
+		//se guardan los cambios del salon seleccionado en la base de datos
 		SalonUtil.modificarSalon(salon);
 		
 		//se ingresa el horario
@@ -144,9 +147,11 @@ public class ReservaUtil {
             }
         } while (hora == null);
         
+        //actualizamos el estado del mozo en la base de datos 
         mozo.setEstado(false);
 		MozoUtil.modificarMozo(mozo);
         
+		// creamos la reserva
 		crearReserva(comensales, mesas, total, false, fecha, hora, cliente, salon, mozo);
 
 	}
@@ -157,7 +162,7 @@ public class ReservaUtil {
 		reservaDao.guardarReserva(nueva);
 	}
 
-	public void mostrarReservas() throws Exception {
+	public static void mostrarReservas() throws Exception {
 		List<Reserva> lista = new ArrayList<Reserva>();
 		lista = reservaDao.obtenerReservas();
 		if (lista.isEmpty() || lista == null)
@@ -166,7 +171,7 @@ public class ReservaUtil {
 		lista.stream().forEach(System.out::println);
 	}
 
-	public void mostrarReservasPendientes() throws Exception {
+	public static void mostrarReservasPendientes() throws Exception {
 		List<Reserva> lista = new ArrayList<Reserva>();
 		lista = reservaDao.obtenerReservas();
 		if (lista.isEmpty())
@@ -183,33 +188,46 @@ public class ReservaUtil {
 		return reservaDao.obtenerReserva(id);
 	}
 
-	public void finalizarReserva(Reserva aModificar) {
+	public static void finalizarReserva(Reserva aModificar) {
+		Scanner sc = new Scanner(System.in);
+		//se modifica el estado de la reserva
 		aModificar.setEstado(true);
+		//se actualiza la cantidad de mesas disponibles del salon
 		aModificar.getSalon().setMesas(aModificar.getSalon().getMesas() + aModificar.getMesas());
+		//se cambia el valor de las mesas a 0
 		aModificar.setMesas(0);
+		//se actualiza el estado del mozo
 		aModificar.getMozo().setEstado(true);
+		
 		String res;
 		int consumido = 0;
+		
+		//solicitamos el ingreso del monto a pagar por la comida
 		do {
 			System.out.println("Ingrese el monto de lo consumido en la reserva:");
-			res = sc.next();
+			res = sc.nextLine();
 			try {
 				consumido = Integer.parseInt(res);
 			} catch (Exception e) {
 				System.out.println("Debe ingresar un numero");
 			}
 		} while (consumido == 0);
+		
+		//se modifica y guarda el valor del monto a pagar en la base de datos 
 		aModificar.setTotal(aModificar.getTotal() + consumido);
-
 		reservaDao.modificarReserva(aModificar);
 	}
 
-	public void eliminarReserva(Reserva aEliminar) {
+	public static void eliminarReserva(Reserva aEliminar) {
+		//actualizamos las mesas del salon
 		aEliminar.getSalon().setMesas(aEliminar.getSalon().getMesas() + aEliminar.getMesas());
+		//actualizamos el estado del mozo
 		aEliminar.getMozo().setEstado(true);
+		//se actualiza el salon y el mozo en la base  de datos
 		SalonUtil.modificarSalon(aEliminar.getSalon());
 		MozoUtil.modificarMozo(aEliminar.getMozo());
-
+		
+		//se elimina la reserva de la base de datos
 		reservaDao.eliminarReserva(aEliminar);
 	}
 }

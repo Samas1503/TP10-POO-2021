@@ -33,8 +33,9 @@ public class ClienteUtil {
         clienteDao.guardarCliente(nuevo);
     }
 
-    public void mostrarCliente(int id) {
+    public static void mostrarCliente(int id) {
         Cliente cliente = null;
+        //controlamos que el cliente sea un particular o una empresa
         try {
             cliente = obtenerParticular(id);
             System.out.println(cliente.toString());
@@ -42,7 +43,8 @@ public class ClienteUtil {
             try {
                 cliente = obtenerEmpresa(id);
                 System.out.println(cliente.toString());
-            } catch (Exception f) {
+            } catch (Exception f) // si no es ninguno, no existe el cliente  
+            {
                 System.out.println("No se encontro el cliente ingresado.");
             }
         }
