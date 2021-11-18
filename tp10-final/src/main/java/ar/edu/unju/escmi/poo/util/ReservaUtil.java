@@ -83,6 +83,7 @@ public class ReservaUtil {
 	}
 
 	public static void generarReserva(Cliente cliente) throws Exception {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		if (cliente == null)
 			throw new NullPointerException();
@@ -189,6 +190,7 @@ public class ReservaUtil {
 	}
 
 	public static void finalizarReserva(Reserva aModificar) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		//se modifica el estado de la reserva
 		aModificar.setEstado(true);

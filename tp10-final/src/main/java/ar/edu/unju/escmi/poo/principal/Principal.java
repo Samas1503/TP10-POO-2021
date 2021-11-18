@@ -10,9 +10,9 @@ import ar.edu.unju.escmi.poo.util.SalonUtil;
 public class Principal {
     public static void main(String[] args) {
 
-        // usar primera vez
+        // en caso de que no haya datos cargados, usa la primera vez
         
-        /*
+    	if(ReservaUtil.obtenerReservas().isEmpty()) {
         // clientes
         ClienteUtil.precargarClientes();
 
@@ -26,7 +26,7 @@ public class Principal {
         ReservaUtil.precargarReservas();
         
         // menu
-    	*/
+    	}
         MenuUtil.menu();
     }
 }

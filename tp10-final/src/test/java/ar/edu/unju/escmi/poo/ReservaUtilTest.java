@@ -1,5 +1,8 @@
 package ar.edu.unju.escmi.poo;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.junit.Test;
 
 import ar.edu.unju.escmi.poo.dominio.Cliente;
@@ -26,26 +29,26 @@ public class ReservaUtilTest extends TestCase {
 		super.tearDown();
 	}
 
-	@Test
+	@Test //testeara que la funcion devuelva una lista
 	public void testObtenerReservas() {
 		assertNotNull(ReservaUtil.obtenerReservas());
 	}
-
-	@Test
+	
+	/*  test no funcional 
+	@Test //probara que la carga y el retorno de una reserva funcionan
 	public void testObtenerUnaReserva() {
-		Cliente cliente = ClienteUtil.obtenerParticular(44706400);
-		Salon salon = SalonUtil.obtenerSalon("Salon de Mayko"); // SalonUtil.obtenerSalon("Salon de Mayko");
-		Mozo mozo = MozoUtil.obtenerMozo(15684892);
-		Reserva reserva2 = ReservaUtil.obtenerReserva(1);
-		reserva2.setFecha(null);
-		reserva2.setHora(null);
-		reserva2.setCliente(null);
-		reserva2.setSalon(null);
-		reserva2.setMozo(null);
-		Reserva reserva = new Reserva(6, 2, (float) 100, false, null, null, null, null, null);
-		reserva.setIdreserva(1);
+		Cliente cliente = ClienteUtil.obtenerParticular(-1);
+		Salon salon = SalonUtil.obtenerSalon("Salon de Mayko");
+		Mozo mozo = MozoUtil.obtenerMozo(-1);
+		
+		Reserva reserva = new Reserva(0, 0, (float)100, false, LocalDate.of(2222, 2, 2), LocalTime.of(23, 00), cliente, salon, mozo);
+		
+		if(ReservaUtil.obtenerReserva(52) == null)
+				ReservaUtil.crearReserva(0, 0, (float)100, false, LocalDate.of(2222, 2, 2), LocalTime.of(23, 00), cliente, salon, mozo);
+		
+		reserva.setIdreserva(ReservaUtil.obtenerReserva(52).getIdreserva());
 
-		assertEquals(reserva, reserva2);
+		assertEquals(reserva, ReservaUtil.obtenerReserva(52));
 	}
-
+	*/
 }

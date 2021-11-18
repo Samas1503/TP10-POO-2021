@@ -21,25 +21,36 @@ public class ClienteUtilTest extends TestCase {
 		super.tearDown();
 	}
 
-	@Test
+	@Test // probara que la funcion obtener clientes devuelva una lista
 	public void testObtenerClientesTest() {
 		ClienteUtil clienteUtil = new ClienteUtil();
 
 		assertNotNull(clienteUtil.obtenerClientes());
 	}
 
-	@Test
+	@Test //probara que la creacion de un Particular y la recuperacion de esté funcionan
 	public void testObtenerParticularTest() {
-		Particular particular = new Particular("Mayko Hernandez", "hola@pvto.com", 123, 44706681);
-		particular.setId(1);
-		assertEquals(particular, ClienteUtil.obtenerParticular(44706681));
+		Particular particular = new Particular("ejemploTest", "ejemploTest", -1, -1);
+		
+		// para la primera vez que se ejecute la prueba 
+		if(ClienteUtil.obtenerParticular(-1) == null)
+			ClienteUtil.crearClienteParticular(-1, "ejemploTest", "ejemploTest", -1);
+		
+		particular.setId(ClienteUtil.obtenerParticular(-1).getId());
+		
+		assertEquals(particular, ClienteUtil.obtenerParticular(-1));
 	}
 
-	@Test
+	@Test //probara que la creacion de un Empresa y la recuperacion de esté funcionan
 	public void testObtenerEmpresaTest() {
-		Empresa empresa = new Empresa("The Wester", "thewester@ea.com", 852, 789456123);
-		empresa.setId(7);
-		Empresa empresa2 = ClienteUtil.obtenerEmpresa(789456123);
-		assertEquals(empresa, empresa2);
+		Empresa empresa = new Empresa("ejemploTest", "ejemploTest", -2, -2);
+		
+		// para la primera vez que se ejecuta el test
+		if(ClienteUtil.obtenerEmpresa(-2) == null)
+			ClienteUtil.crearClienteEmpresa(-2, "ejemploTest", "ejemploTest", -2);
+		
+		empresa.setId(ClienteUtil.obtenerEmpresa(-2).getId());
+		
+		assertEquals(empresa, ClienteUtil.obtenerEmpresa(-2));
 	}
 }

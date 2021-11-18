@@ -20,18 +20,19 @@ public class MozoUtilTest extends TestCase {
 		super.tearDown();
 	}
 
-	@Test
+	@Test // testeara que la funcion de obtenerMozos devuelva una lista
 	public void testObtenerMozosTest() {
-		MozoUtil mozoUtil = new MozoUtil();
-
-		assertNotNull(mozoUtil.obtenerMozos());
+		
+		assertNotNull(MozoUtil.obtenerMozos());
 	}
 
-	@Test
+	@Test //testeara que la carga y el retorno de un mozo funcionan correctamente 
 	public void testObtenerUnMozoTest() {
-		Mozo mozo = new Mozo(23549842, "Jarvis", "mi casa 18", true);
-		Mozo mozo2 = MozoUtil.obtenerMozo(23549842);
-		assertEquals(mozo, mozo2);
+		Mozo mozo = new Mozo(-1, "ejemploTest", "ejemploTest", true);
+		if(MozoUtil.obtenerMozo(-1) == null)
+			MozoUtil.crearMozo(-1, "ejemploTest", "ejemploTest");
+		
+		assertEquals(mozo,MozoUtil.obtenerMozo(-1));
 	}
 
 }

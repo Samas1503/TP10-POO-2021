@@ -60,7 +60,8 @@ public class ClienteUtil {
     
     public static Cliente generarNuevoCliente() {
     	Cliente cliente = null;
-    	Scanner sc = new Scanner(System.in);
+    	@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
     	int telefono = 0, id = 0;
         String nombre, email, r = "";
     	

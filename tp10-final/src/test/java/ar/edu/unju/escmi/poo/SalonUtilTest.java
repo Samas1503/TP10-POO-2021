@@ -22,8 +22,11 @@ public class SalonUtilTest extends TestCase {
 
     @Test
     public void testObtenerSalon(){
-        Salon esperado = new Salon("Salon de Mayko",10);
-
-        assertEquals(esperado, SalonUtil.obtenerSalon("Salon de Mayko"));
+       if(SalonUtil.obtenerSalon("ejemploTest") == null)
+    	   SalonUtil.crearSalon("ejemploTest", 0);
+       
+    	Salon esperado = new Salon("ejemploTest",0);
+        
+        assertEquals(esperado, SalonUtil.obtenerSalon("ejemploTest"));
     }
 }
