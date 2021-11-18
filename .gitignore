@@ -1,0 +1,22 @@
+#
+# IntelliJ
+#
+*.iml
+.idea/*
+!.idea/runConfigurations/
+
+#
+# Visual Studio Code
+#
+.settings/
+.classpath
+.factorypath
+.project
+.vscode/
+
+#
+# tp10-final
+#
+
+target/classes/META-INF/persistence.xml
+/target/
