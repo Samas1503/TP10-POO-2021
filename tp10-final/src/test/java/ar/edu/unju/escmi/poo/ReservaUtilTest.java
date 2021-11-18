@@ -3,6 +3,7 @@ package ar.edu.unju.escmi.poo;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.hibernate.Hibernate;
 import org.junit.Test;
 
 import ar.edu.unju.escmi.poo.dominio.Cliente;
@@ -34,21 +35,22 @@ public class ReservaUtilTest extends TestCase {
 		assertNotNull(ReservaUtil.obtenerReservas());
 	}
 	
-	/*  test no funcional 
+	
 	@Test //probara que la carga y el retorno de una reserva funcionan
 	public void testObtenerUnaReserva() {
-		Cliente cliente = ClienteUtil.obtenerParticular(-1);
-		Salon salon = SalonUtil.obtenerSalon("Salon de Mayko");
-		Mozo mozo = MozoUtil.obtenerMozo(-1);
+		Cliente cliente = ClienteUtil.obtenerParticular(2);
+		Salon salon = SalonUtil.obtenerSalon("Salon de Samuel");
+		Mozo mozo = MozoUtil.obtenerMozo(2);
 		
-		Reserva reserva = new Reserva(0, 0, (float)100, false, LocalDate.of(2222, 2, 2), LocalTime.of(23, 00), cliente, salon, mozo);
-		
-		if(ReservaUtil.obtenerReserva(52) == null)
-				ReservaUtil.crearReserva(0, 0, (float)100, false, LocalDate.of(2222, 2, 2), LocalTime.of(23, 00), cliente, salon, mozo);
-		
-		reserva.setIdreserva(ReservaUtil.obtenerReserva(52).getIdreserva());
+		Reserva reserva = new Reserva(2, 1, (float)50.0, false, LocalDate.now(), null, cliente, salon, mozo);
+		reserva.setIdreserva(2);
+		Reserva reserva2 = ReservaUtil.obtenerReserva(2);
+		reserva2.setHora(null);
+		reserva2.setCliente((Cliente)Hibernate.unproxy(reserva2.getCliente()));
+		reserva2.setMozo((Mozo)Hibernate.unproxy(reserva2.getMozo()));
+		reserva2.setSalon((Salon)Hibernate.unproxy(reserva2.getSalon()));
 
-		assertEquals(reserva, ReservaUtil.obtenerReserva(52));
+		assertEquals(reserva, reserva2);
 	}
-	*/
+	
 }
