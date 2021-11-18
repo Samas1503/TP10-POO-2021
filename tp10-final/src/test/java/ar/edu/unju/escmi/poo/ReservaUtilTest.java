@@ -1,7 +1,6 @@
 package ar.edu.unju.escmi.poo;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import org.hibernate.Hibernate;
 import org.junit.Test;
