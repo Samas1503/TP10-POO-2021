@@ -25,7 +25,7 @@ public class SalonUtil {
         return salonDao.obtenerSalon(nombre);
     }
 
-    public boolean verificarSalon(String nombre) {
+    public static boolean verificarSalon(String nombre) {
         try {
             Salon buscado = salonDao.obtenerSalon(nombre);
             if (buscado.getNombre().equals(nombre))
@@ -63,11 +63,11 @@ public class SalonUtil {
         return salonDao.obtenerSalones();
     }
 
-    public int obtenerMesasLibres(Salon salon) {
+    public static int obtenerMesasLibres(Salon salon) {
         return salon.getMesas();
     }
 
-    public int obtenerMesasOcupadas(String n) {
+    public static int obtenerMesasOcupadas(String n) {
         int m = 0;
         List<Reserva> reservas = ReservaUtil.obtenerReservas();
         for (Reserva r : reservas)
@@ -76,7 +76,7 @@ public class SalonUtil {
         return m;
     }
 
-    public int obtenerComensales(String n) {
+    public static int obtenerComensales(String n) {
         int c = 0;
         List<Reserva> reservas = ReservaUtil.obtenerReservas();
         for (Reserva r : reservas)
